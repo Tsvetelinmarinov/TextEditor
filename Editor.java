@@ -20,13 +20,7 @@ import javax.swing.border.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-
-
-
-
-
-
+import javax.swing.text.Caret;
 
 
 /**
@@ -110,7 +104,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     private JLabel f_size = new JLabel("size >");
 
     //number model for the size spinner
-    private SpinnerModel mdl = new SpinnerNumberModel(20,0,50,1);
+    private SpinnerModel mdl = new SpinnerNumberModel(19,0,50,1);
 
     //size spinner
     private JSpinner size_spinner = new JSpinner(mdl);
@@ -122,16 +116,34 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     private JLabel color_chooser = new JLabel();
 
     //Theme
-    private JLabel theme_section = new JLabel("Theme");
+    private JLabel theme_section = new JLabel("Apperance");
 
     //theme_label
-    private JLabel theme = new JLabel("theme");
+    private JLabel theme = new JLabel("theme >");
 
     //The string holds the themes for the theme_box
     private String themes[] = { "classic","dark","gray" };
 
     //themes box
     private JComboBox<String> theme_box = new JComboBox<String>(themes);
+
+    //menu bar color chooser
+    private JLabel menu_background_chooser = new JLabel();
+
+    //menu bar color label
+    private JLabel menu_bar_color = new JLabel("menu bar >");
+
+    //text area background color label
+    private JLabel text_box_background = new JLabel("text box >");
+
+    //text area background color chooser
+    private JLabel text_box_color_chooser = new JLabel();
+
+    //application background label
+    private JLabel app_background = new JLabel("application background >");
+
+    //application background color chooser
+    private JLabel app_background_color_chooser = new JLabel();
 
     //info
     private JMenuItem info = new JMenuItem("info");
@@ -155,12 +167,12 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     Editor(){
 
         //Text box
-        text_box.setFont(new Font("Fira Code",Font.PLAIN,20));
+        text_box.setFont(new Font("Fira Code",Font.PLAIN,19));
         text_box.setForeground(new Color(220,220,220));
         text_box.setBackground(new Color(25,25,25));
         text_box.setBorder(null);
         text_box.setEditable(true);
-        text_box.setCaretColor(Color.LIGHT_GRAY);
+        text_box.setCaretColor(new Color(200,200,100));
         text_box.setFocusable(true);
 
         //Scroll pane
@@ -593,7 +605,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                  */
                 @Override
                 public void mouseEntered(MouseEvent mouseEvent) {
-                    font_section.setForeground(Color.white);
+                    font_section.setForeground(new Color(78,34,160));
                 }
 
                 /**
@@ -639,7 +651,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                  */
                 @Override
                 public void mouseEntered(MouseEvent mouseEvent) {
-                    f_family.setForeground(Color.white);
+                    f_family.setForeground(new Color(78,34,160));
                 }
 
                 /**
@@ -655,7 +667,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             font_box.setForeground(new Color(230,230,230));
             font_box.setBackground(new Color(29,29,29));
             font_box.setSelectedItem("Fira Code");
-            font_box.setBounds(80,129,250,23);
+            font_box.setBounds(80,128,250,25);
             font_box.addMouseListener(new MouseListener(){
 
                 /**
@@ -736,7 +748,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                  */
                 @Override
                 public void mouseEntered(MouseEvent mouseEvent) {
-                    f_size.setForeground(Color.white);
+                    f_size.setForeground(new Color(78,34,160));
                 }
 
                 /**
@@ -795,7 +807,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                  */
                 @Override
                 public void mouseEntered(MouseEvent mouseEvent) {
-                    f_color.setForeground(Color.white);
+                    f_color.setForeground(new Color(78,34,160));
                 }
 
                 /**
@@ -813,9 +825,141 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             color_chooser.setBounds(585,130,20,20);
             color_chooser.addMouseListener(this);
 
+            theme_section.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme_section.setForeground(new Color(220,220,220));
+            theme_section.setBounds(270,215,100,20);
+            theme_section.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    theme_section.setForeground(new Color(78,34,160));
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    theme_section.setForeground(new Color(220,220,220));
+                }
+            });
+
+            theme.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme.setForeground(new Color(220,220,220));
+            theme.setBounds(100,279,80,20);
+            theme.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    theme.setForeground(new Color(78,34,160));
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    theme.setForeground(new Color(220,220,220));
+                }
+            });
+
+            theme_box.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme_box.setForeground(new Color(230,230,230));
+            theme_box.setBackground(new Color(29,29,29));
+            theme_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+            theme_box.setSelectedItem("dark");
+            theme_box.setBounds(180,275,150,30);
+
+            menu_bar_color.setFont(new Font("Fira Code",Font.PLAIN,14));
+            menu_bar_color.setForeground(new Color(220,220,220));
+            menu_bar_color.setBounds(100,340,100,20);
+            menu_bar_color.addMouseListener(this);
+
+            menu_background_chooser.setBounds(210,339,20,20);
+            menu_background_chooser.setBackground(((Color)getContentPane().getBackground()));
+            menu_background_chooser.setBorder(BorderFactory.createLineBorder(new Color(200,200,200)));
+            menu_background_chooser.setOpaque(true);
+            menu_background_chooser.addMouseListener(this);
+
+            text_box_background.setFont(new Font("Fira Code",Font.PLAIN,14));
+            text_box_background.setForeground(new Color(220,220,220));
+            text_box_background.setBounds(100,370,100,20);
+            text_box_background.addMouseListener(this);
+
+            text_box_color_chooser.setBounds(210,370,20,20);
+            text_box_color_chooser.setBackground(new Color(25,25,25));
+            text_box_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
+            text_box_color_chooser.setOpaque(true);
+            text_box_color_chooser.addMouseListener(this);
+
+            app_background.setFont(new Font("Fira Code",Font.PLAIN,14));
+            app_background.setForeground(new Color(220,220,220));
+            app_background.setBounds(100,440,220,20);
+            app_background.addMouseListener(this);
+
+            app_background_color_chooser.setBounds(330,440,20,20);
+            app_background_color_chooser.setBackground(new Color(29,29,29));
+            app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
+            app_background_color_chooser.setOpaque(true);
+            app_background_color_chooser.addMouseListener(this);
+
             //setting up the frame
             settings_fr.setVisible(true);
-            settings_fr.setBounds(200,200,630,600);
+            settings_fr.setBounds(200,200,630,550);
             settings_fr.setLayout(null);
             settings_fr.setResizable(false);
             settings_fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -829,6 +973,15 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             settings_fr.add(size_spinner);
             settings_fr.add(f_color);
             settings_fr.add(color_chooser);
+            settings_fr.add(theme_section);
+            settings_fr.add(theme);
+            settings_fr.add(theme_box);
+            settings_fr.add(menu_bar_color);
+            settings_fr.add(menu_background_chooser);
+            settings_fr.add(text_box_background);
+            settings_fr.add(text_box_color_chooser);
+            settings_fr.add(app_background);
+            settings_fr.add(app_background_color_chooser);
         }
 
     }
@@ -855,6 +1008,33 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
 
             text_box.setForeground(clr);
             color_chooser.setBackground(clr);
+        }
+
+        //menu background color chooser
+        if(mouseEvent.getSource() == menu_background_chooser) {
+            JColorChooser cl_chs = new JColorChooser();
+            Color clr = cl_chs.showDialog(null,"pick a color",(Color)menu_bar.getBackground());
+
+            menu_bar.setBackground(clr);
+            menu_background_chooser.setBackground(clr);
+        }
+
+        //text box color chooser
+        if(mouseEvent.getSource() == text_box_color_chooser) {
+            JColorChooser cl_chsr = new JColorChooser();
+            Color clr = cl_chsr.showDialog(null,"pick a color",new Color(25,25,25));
+
+            text_box.setBackground(clr);
+            text_box_color_chooser.setBackground(clr);
+        }
+
+        //application background chooser
+        if(mouseEvent.getSource() == app_background_color_chooser) {
+            JColorChooser clr_chsr = new JColorChooser();
+            Color clr = clr_chsr.showDialog(null,"pick a color",new Color(29,29,29));
+
+            getContentPane().setBackground(clr);
+            app_background_color_chooser.setBackground(clr);
         }
     }
 
@@ -905,6 +1085,36 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
         }
 
+        //menu bar color label
+        if(mouseEvent.getSource() == menu_bar_color) {
+            menu_bar_color.setForeground(new Color(78,34,160));
+        }
+
+        //menu background color chooser
+        if(mouseEvent.getSource() == menu_background_chooser) {
+            menu_background_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+        }
+
+        //text box background label
+        if(mouseEvent.getSource() == text_box_background) {
+            text_box_background.setForeground(new Color(78,34,160));
+        }
+
+        //text box color chooser
+        if(mouseEvent.getSource() == text_box_color_chooser) {
+            text_box_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+        }
+
+        //application background label
+        if(mouseEvent.getSource() == app_background) {
+            app_background.setForeground(new Color(78,34,160));
+        }
+
+        //application background chooser
+        if(mouseEvent.getSource() == app_background_color_chooser) {
+            app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+        }
+
     }
 
     /**
@@ -936,6 +1146,36 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         //color chooser
         if(mouseEvent.getSource() == color_chooser) {
             color_chooser.setBorder(null);
+        }
+
+        //menu bar color label
+        if(mouseEvent.getSource() == menu_bar_color) {
+            menu_bar_color.setForeground(new Color(220,220,220));
+        }
+
+        //menu bar color chooser
+        if(mouseEvent.getSource() == menu_background_chooser) {
+            menu_background_chooser.setBorder(BorderFactory.createLineBorder(new Color(200,200,200)));
+        }
+
+        //text box background label
+        if(mouseEvent.getSource() == text_box_background) {
+            text_box_background.setForeground(new Color(220,220,220));
+        }
+
+        //text box color chooser
+        if(mouseEvent.getSource() == text_box_color_chooser) {
+            text_box_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
+        }
+
+        //app background color label
+        if(mouseEvent.getSource() == app_background) {
+            app_background.setForeground(new Color(220,220,220));
+        }
+
+        //app background color chooser
+        if(mouseEvent.getSource() == app_background_color_chooser) {
+            app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
         }
 
     }
