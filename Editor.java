@@ -1,9 +1,10 @@
 /**
  * TextEditor++
+ *  Application
  */
 
+//no package
 
-package appdata;
 
 
 
@@ -11,18 +12,15 @@ package appdata;
 
 
 import javax.swing.*;
+import java.awt.event.*;
+import java.util.*;
+import java.awt.*;
+import java.io.*;
+import javax.swing.border.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.event.*;
-import java.util.Scanner;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.IOException;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Color;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import static java.awt.Color.DARK_GRAY;
+
 
 
 
@@ -32,121 +30,117 @@ import static java.awt.Color.DARK_GRAY;
 
 
 /**
- *
+ * The type Editor.
  */
 @SuppressWarnings("serial")
-public class Editor extends JFrame implements MouseListener,ActionListener {
+public class Editor extends JFrame implements ActionListener,MouseListener{
 
 
 
     /**
      * @params
      */
-
-    //Main menu bar
+    //main menu bar
     private JMenuBar menu_bar = new JMenuBar();
 
-    //File menu contains usual file options
+    //file menu
     private JMenu file_menu = new JMenu("File");
 
-    //Edit menu contains usual edit options
+    //edit menu
     private JMenu edit_menu = new JMenu("Edit");
 
-    //Options menu contains font and theme settings
+    //options menu
     private JMenu options_menu = new JMenu("Options");
 
-    //About menu contains main information
+    //about menu
     private JMenu about_menu = new JMenu("About");
 
-    //open a file
-    private JMenuItem load_item = new JMenuItem("open");
+    //new file
+    private JMenuItem new_file = new JMenuItem("new file");
 
-    //save current file
-    private JMenuItem export_item = new JMenuItem("save");
+    //open
+    private JMenuItem load = new JMenuItem("open");
 
-    //open new window
-    private JMenuItem new_window_item = new JMenuItem("new window");
+    //save
+    private JMenuItem export = new JMenuItem("save");
 
-    //close the application
-    private JMenuItem close_item = new JMenuItem("exit");
+    //new window
+    private JMenuItem new_window = new JMenuItem("new window");
 
-    //select all the text in the text box
+    //restart
+    private JMenuItem reboot = new JMenuItem("restart");
+
+    //exit
+    private JMenuItem close = new JMenuItem("exit");
+
+    //select all
     private JMenuItem select_all = new JMenuItem("select all");
 
-    //copy selected text in the text box
-    private JMenuItem cpy_item = new JMenuItem("copy");
+    //copy
+    private JMenuItem cpy = new JMenuItem("copy");
 
-    //append copied text
-    private JMenuItem paste_item = new JMenuItem("paste");
+    //paste
+    private JMenuItem paste = new JMenuItem("paste");
 
-    //delete all the text from the text box
-    private JMenuItem dlt_item = new JMenuItem("delete");
+    //The string hold the copied text from the 'cpy' menu
+    private String copied_txt;
 
-    //font settings
-    private JMenuItem font_settings = new JMenuItem("font and color");
+    //delete
+    private JMenuItem dlt = new JMenuItem("delete all");
 
-    //theme settings
-    private JMenuItem theme_settings = new JMenuItem("theme");
+    //settings
+    private JMenuItem settings = new JMenuItem("settings");
 
-    //show information
-    private JMenuItem info_item = new JMenuItem("info");
+    //settings window
+    private JFrame settings_fr = new JFrame("settings");
 
-    //the string contains all the system fonts
+    //Font and color
+    private JLabel font_section = new JLabel("Font and color");
+
+    //font family label
+    private JLabel f_family = new JLabel("font >");
+
+    //The string holds all the local fonts in the system
     private String local_fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
-    //choose a font
+    //font`s box
     private JComboBox<String> font_box = new JComboBox<String>(local_fonts);
 
-    //the string contains the theme options(themes);
-    private String themes[] = {"classic","dark","darker","gray"};
+    //font size label
+    private JLabel f_size = new JLabel("size >");
 
-    //choose a theme
+    //number model for the size spinner
+    private SpinnerModel mdl = new SpinnerNumberModel(20,0,50,1);
+
+    //size spinner
+    private JSpinner size_spinner = new JSpinner(mdl);
+
+    //font color label
+    private JLabel f_color = new JLabel("color >");
+
+    //color chooser
+    private JLabel color_chooser = new JLabel();
+
+    //Theme
+    private JLabel theme_section = new JLabel("Theme");
+
+    //theme_label
+    private JLabel theme = new JLabel("theme");
+
+    //The string holds the themes for the theme_box
+    private String themes[] = { "classic","dark","gray" };
+
+    //themes box
     private JComboBox<String> theme_box = new JComboBox<String>(themes);
 
-    //model for the size of the font(minimum -- 0, maximum -- 50, default -- 12)
-    private SpinnerModel size_mdl = new SpinnerNumberModel(13,0,50,1);
+    //info
+    private JMenuItem info = new JMenuItem("info");
 
-    //choose font size
-    private JSpinner size_spin = new JSpinner(size_mdl);
-
-    //font settings window
-    private JFrame font_config_frame = new JFrame("Font settings");
-
-    //theme settings window
-    private JFrame theme_frame = new JFrame("Theme");
-
-    //Information window
-    private JFrame info_frame = new JFrame("About");
-
-    //Font name
-    private JLabel family_lbl = new JLabel("font >");
-
-    //Font size
-    private JLabel size_lbl = new JLabel("size >");
-
-    //Font color
-    private JLabel color_lbl = new JLabel("color >");
-
-    //theme name
-    private JLabel theme_lbl = new JLabel("theme >");
-
-    //choose a color
-    private JLabel color_block = new JLabel();
-
-    //about
-    private JLabel info_lbl = new JLabel("about");
-
-    //hold the text from the text box(when 'copy' menu item request it)
-    private String cpytxt;
-
-    //The text box
+    //Text box
     private JTextArea text_box = new JTextArea();
 
-    //scroll pane fot the text box
+    //Scroll pane for the text box
     private JScrollPane scroll = new JScrollPane(text_box);
-
-    //All the main information wrote(setEditable = false)
-    private JTextArea info_area = new JTextArea();
 
 
 
@@ -158,140 +152,158 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
     /**
      *
      */
-    Editor() {
-        //setting up the menu bar
-        menu_bar.setBackground(Color.WHITE);
-        menu_bar.setBounds(0,0,400,20);
-        menu_bar.setBorder(null);
+    Editor(){
 
-        //setting up the text box
-        text_box.setFont(new Font("Fira Code",Font.PLAIN,14));
-        text_box.setBackground(Color.white);
+        //Text box
+        text_box.setFont(new Font("Fira Code",Font.PLAIN,20));
+        text_box.setForeground(new Color(220,220,220));
+        text_box.setBackground(new Color(25,25,25));
+        text_box.setBorder(null);
         text_box.setEditable(true);
-        text_box.setLineWrap(true);
-        text_box.setWrapStyleWord(true);
-        text_box.setCaretColor(Color.DARK_GRAY);
+        text_box.setCaretColor(Color.LIGHT_GRAY);
+        text_box.setFocusable(true);
 
-        //setting up the scroll pane of the text box
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160),1));
+        //Scroll pane
+        scroll.setBounds(-1,50,1103,499);
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,24,160),1));
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(-1,35,1095,510);
 
-        //setting up the file menu
-        file_menu.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,14));
-        file_menu.setForeground(DARK_GRAY);
+        //main menu bar
+        menu_bar.setBackground(new Color(29,29,29));
+        menu_bar.setBorder(null);
+        menu_bar.setBounds(0,0,216,32);
+
+        //File menu
+        file_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        file_menu.setForeground(new Color(230,230,230));
         file_menu.setBorder(null);
         file_menu.addMouseListener(this);
         menu_bar.add(file_menu);
 
-        //setting up the edit menu
-        edit_menu.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,14));
-        edit_menu.setForeground(DARK_GRAY);
+        //Edit menu
+        edit_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        edit_menu.setForeground(new Color(240,240,240));
         edit_menu.setBorder(null);
         edit_menu.addMouseListener(this);
         menu_bar.add(edit_menu);
 
-        //setting up the options menu
-        options_menu.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,14));
-        options_menu.setForeground(DARK_GRAY);
+        //Options menu
+        options_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        options_menu.setForeground(new Color(230,230,230));
         options_menu.setBorder(null);
         options_menu.addMouseListener(this);
         menu_bar.add(options_menu);
 
-        //setting up the information menu
-        about_menu.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,14));
-        about_menu.setForeground(DARK_GRAY);
+        //About menu
+        about_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        about_menu.setForeground(new Color(220,220,220));
         about_menu.setBorder(null);
         about_menu.addMouseListener(this);
         menu_bar.add(about_menu);
 
-        //open menu
-        load_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        load_item.setForeground(DARK_GRAY);
-        load_item.setBorder(null);
-        load_item.addActionListener(this);
-        file_menu.add(load_item);
+        //new file
+        new_file.setFont(new Font("Fira Code",Font.PLAIN,14));
+        new_file.setForeground(new Color(230,230,230));
+        new_file.setBackground(new Color(34,34,34));
+        new_file.setBorder(null);
+        new_file.addActionListener(this);
+        file_menu.add(new_file);
 
-        //save menu
-        export_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        export_item.setForeground(DARK_GRAY);
-        export_item.setBorder(null);
-        export_item.addActionListener(this);
-        file_menu.add(export_item);
+        //open
+        load.setFont(new Font("Fira Code",Font.PLAIN,14));
+        load.setForeground(new Color(230,230,230));
+        load.setBackground(new Color(34,34,34));
+        load.setBorder(null);
+        load.addActionListener(this);
+        file_menu.add(load);
 
-        //new window menu
-        new_window_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        new_window_item.setForeground(DARK_GRAY);
-        new_window_item.setBorder(null);
-        new_window_item.addActionListener(this);
-        file_menu.add(new_window_item);
+        //save
+        export.setFont(new Font("Fira Code",Font.PLAIN,14));
+        export.setForeground(new Color(230,230,230));
+        export.setBackground(new Color(34,34,34));
+        export.setBorder(null);
+        export.addActionListener(this);
+        file_menu.add(export);
 
-        //exit menu
-        close_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        close_item.setForeground(DARK_GRAY);
-        close_item.setBorder(null);
-        close_item.addActionListener(this);
-        file_menu.add(close_item);
+        //new window
+        new_window.setFont(new Font("Fira Code",Font.PLAIN,14));
+        new_window.setForeground(new Color(230,230,230));
+        new_window.setBackground(new Color(34,34,34));
+        new_window.setBorder(null);
+        new_window.addActionListener(this);
+        file_menu.add(new_window);
 
-        //select all menu
-        select_all.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        select_all.setForeground(Color.DARK_GRAY);
+        //restart
+        reboot.setFont(new Font("Fira Code",Font.PLAIN,14));
+        reboot.setForeground(new Color(230,230,230));
+        reboot.setBackground(new Color(34,34,34));
+        reboot.setBorder(null);
+        reboot.addActionListener(this);
+        file_menu.add(reboot);
+
+        //exit
+        close.setFont(new Font("Fira Code",Font.PLAIN,14));
+        close.setForeground(new Color(230,230,230));
+        close.setBackground(new Color(34,34,34));
+        close.setBorder(null);
+        close.addActionListener(this);
+        file_menu.add(close);
+
+        //select all
+        select_all.setFont(new Font("Fira Code",Font.PLAIN,14));
+        select_all.setForeground(new Color(230,230,230));
+        select_all.setBackground(new Color(34,34,34));
         select_all.setBorder(null);
         select_all.addActionListener(this);
         edit_menu.add(select_all);
 
-        //copy menu
-        cpy_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        cpy_item.setForeground(DARK_GRAY);
-        cpy_item.setBorder(null);
-        cpy_item.addActionListener(this);
-        edit_menu.add(cpy_item);
+        //copy
+        cpy.setFont(new Font("Fira Code",Font.PLAIN,14));
+        cpy.setForeground(new Color(230,230,230));
+        cpy.setBackground(new Color(34,34,34));
+        cpy.setBorder(null);
+        cpy.addActionListener(this);
+        edit_menu.add(cpy);
 
-        //paste menu
-        paste_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        paste_item.setForeground(DARK_GRAY);
-        paste_item.setBorder(null);
-        paste_item.addActionListener(this);
-        edit_menu.add(paste_item);
+        //paste
+        paste.setFont(new Font("Fira Code",Font.PLAIN,14));
+        paste.setForeground(new Color(230,230,230));
+        paste.setBackground(new Color(34,34,34));
+        paste.setBorder(null);
+        paste.addActionListener(this);
+        edit_menu.add(paste);
 
-        //delete menu
-        dlt_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        dlt_item.setForeground(DARK_GRAY);
-        dlt_item.setBorder(null);
-        dlt_item.addActionListener(this);
-        edit_menu.add(dlt_item);
+        //delete
+        dlt.setFont(new Font("Fira Code",Font.PLAIN,14));
+        dlt.setForeground(new Color(230,230,230));
+        dlt.setBackground(new Color(34,34,34));
+        dlt.setBorder(null);
+        dlt.addActionListener(this);
+        edit_menu.add(dlt);
 
-        //font settings
-        font_settings.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        font_settings.setForeground(DARK_GRAY);
-        font_settings.setBorder(null);
-        font_settings.addActionListener(this);
-        options_menu.add(font_settings);
+        //settings
+        settings.setFont(new Font("Fira Code",Font.PLAIN,14));
+        settings.setForeground(new Color(230,230,230));
+        settings.setBackground(new Color(34,34,34));
+        settings.setBorder(null);
+        settings.addActionListener(this);
+        options_menu.add(settings);
 
-        //theme settings
-        theme_settings.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        theme_settings.setForeground(Color.DARK_GRAY);
-        theme_settings.setBorder(null);
-        theme_settings.addActionListener(this);
-        options_menu.add(theme_settings);
 
-        //info menu
-        info_item.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-        info_item.setForeground(Color.DARK_GRAY);
-        info_item.setBorder(null);
-        info_item.addActionListener(this);
-        about_menu.add(info_item);
+
 
         /**
          * Setting up the frame
          */
         setTitle("TextEditor++");
-        setVisible(true);
-        setBounds(100,100,1100,580);
+        setBounds(100,50,1100,590);
         setLayout(null);
+        setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(new Color(29,29,29));
+
+        //add the components to the frame
         add(menu_bar);
         add(scroll);
     }
@@ -302,282 +314,525 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
 
+
+
+
+
+
+
+
+
     /**
-     *  -------------------- Action listener --------------------------------
+     * ------------------------ ActionListener --------------------------------
      */
+
+    /**
+     * @param actionEvent
+     */
+    @SuppressWarnings("static-access")
     @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+    public void actionPerformed(ActionEvent actionEvent) {
+
+        /**
+         * new file
+         */
+        if(actionEvent.getSource() == new_file) {
+            JOptionPane.showMessageDialog(null,"All the content will be deleted!","Warning",JOptionPane.WARNING_MESSAGE);
+            text_box.setText("");
+        }
+
+
+
+
         /**
          * open
          */
-        if(e.getSource()==load_item) {
-            JFileChooser file_chooser = new JFileChooser();
-            File file;
-            Scanner scan = null;
+        if(actionEvent.getSource() == load) {
+            //file chooser
+            JFileChooser fl_chooser = new JFileChooser();
 
-            FileNameExtensionFilter java = new FileNameExtensionFilter("java file","java");
+            //file name extension filters
             FileNameExtensionFilter txt = new FileNameExtensionFilter("text file","txt");
-            FileNameExtensionFilter cpp = new FileNameExtensionFilter("c++ file","cpp");
+            FileNameExtensionFilter doc = new FileNameExtensionFilter("document","doc");
             FileNameExtensionFilter html = new FileNameExtensionFilter("html document","html");
             FileNameExtensionFilter fxml = new FileNameExtensionFilter("fxml document","fxml");
+            FileNameExtensionFilter xml = new FileNameExtensionFilter("xml configuration","fxml");
+            FileNameExtensionFilter c = new FileNameExtensionFilter("c file","c");
+            FileNameExtensionFilter cpp = new FileNameExtensionFilter("c++ file","cpp");
+            FileNameExtensionFilter cs = new FileNameExtensionFilter("C# file","cs");
+            FileNameExtensionFilter java = new FileNameExtensionFilter("java file","java");
             FileNameExtensionFilter css = new FileNameExtensionFilter("stylesheet","css");
-            FileNameExtensionFilter xml = new FileNameExtensionFilter("xml document", "xml");
+            FileNameExtensionFilter js = new FileNameExtensionFilter("java script file","js");
+            FileNameExtensionFilter py = new FileNameExtensionFilter("pyton file","py");
 
-            file_chooser.setFileFilter(txt);
-            file_chooser.setFileFilter(cpp);
-            file_chooser.setFileFilter(java);
-            file_chooser.setFileFilter(html);
-            file_chooser.setFileFilter(fxml);
-            file_chooser.setFileFilter(css);
-            file_chooser.setFileFilter(xml);
+            //applying filters
+            fl_chooser.setFileFilter(txt);
+            fl_chooser.setFileFilter(doc);
+            fl_chooser.setFileFilter(html);
+            fl_chooser.setFileFilter(fxml);
+            fl_chooser.setFileFilter(xml);
+            fl_chooser.setFileFilter(c);
+            fl_chooser.setFileFilter(cpp);
+            fl_chooser.setFileFilter(cs);
+            fl_chooser.setFileFilter(java);
+            fl_chooser.setFileFilter(js);
+            fl_chooser.setFileFilter(py);
+            fl_chooser.setFileFilter(css);
 
-            int response = file_chooser.showOpenDialog(null);
+            //The file
+            File dcmnt;
 
-            boolean has_selected = (response == JFileChooser.APPROVE_OPTION) ?
-              true
-              :
-              false
-            ;
+            //Scanner to scan the file
+            Scanner scan = null;
 
-            if(has_selected) {
-                file = new File(file_chooser.getSelectedFile().getAbsolutePath());
+            //@param rspns -- hold the input from the file chooser
+            int rspns = fl_chooser.showOpenDialog(null);
+
+            //load the file
+            boolean isSelected = (rspns == fl_chooser.APPROVE_OPTION) ? true : false;
+
+            if(isSelected) {
+                //creating the file
+                dcmnt = new File(fl_chooser.getSelectedFile().getAbsolutePath());
                 try {
-                    scan = new Scanner(file);
-                    if(file.isFile()) {
-                        while(scan.hasNextLine()) {
-                            String content=scan.nextLine()+"\n";
+                    //initialize scanner to that file
+                    scan = new Scanner(dcmnt);
+
+                    //check if the file is actually file
+                    if(dcmnt.isFile()){
+                        while(scan.hasNextLine()){
+                            //holds the file text content
+                            String content = scan.nextLine() + "\n";
+
+                            //append the text content of the file to the text box
                             text_box.append(content);
                         }
                     }
-                }catch(IOException ioex) {
-                    JOptionPane.showMessageDialog(null,"File not found!");
+                } catch (FileNotFoundException e) {
+                    JOptionPane.showMessageDialog(null,"File not found","Error while loading file",JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
                 }finally {
                     scan.close();
                 }
             }
+
         }
+
+
+
 
         /**
          * save
          */
-        if(e.getSource() == export_item) {
-            JFileChooser file_chooser=new JFileChooser();
+        if(actionEvent.getSource() == export) {
+            //file chooser
+            JFileChooser fl_chsr = new JFileChooser();
+
+            //The file
             File doc;
-            PrintWriter _output_=null;
 
-            int response=file_chooser.showSaveDialog(null);
+            //PrintWriter to print the text from the text box in the file
+            PrintWriter _output_ = null;
 
-            boolean is_selected=(response==JFileChooser.APPROVE_OPTION) ?
-              true
-              :
-              false
-            ;
-            if(is_selected) {
-                doc = new File(file_chooser.getSelectedFile().getAbsolutePath());
+            //hold the response from the file chooser
+            int rsp = fl_chsr.showSaveDialog(null);
+
+            //check if the response is positive('open' button is selected)
+            //and hold the result
+            boolean fileHasBeenSelected = (rsp == fl_chsr.APPROVE_OPTION) ? true : false;
+
+            //check the response(if true -- create file)
+            if(fileHasBeenSelected) {
+                //create the file
+                doc = new File(fl_chsr.getSelectedFile().getAbsolutePath());
 
                 try {
-                    _output_=new PrintWriter(doc);
+                    //create the output printer
+                    _output_ = new PrintWriter(doc);
+
+                    //print the text from the text box to the file
                     _output_.println(text_box.getText());
-                }catch(IOException io_ex) {
-                    JOptionPane.showMessageDialog(null, "File not found!");
+                } catch (FileNotFoundException e) {
+                    JOptionPane.showMessageDialog(null,"directory not found!","Error while saving",JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
                 }finally {
                     _output_.close();
                 }
             }
 
+
         }
+
+
 
         /**
          * new window
          */
-        if(e.getSource()==new_window_item) {
-            new Editor().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if(actionEvent.getSource() == new_window) {
+            //create a new window
+            Editor clone = new Editor();
+
+            //set the new window to close without closing the main window
+            clone.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
+
+
+
+
+        /**
+         * restart
+         */
+        if(actionEvent.getSource() == reboot) {
+            //disconnect the current window
+            dispose();
+
+            //create new window
+            Editor rebooted = new Editor();
+        }
+
+
+
 
         /**
          * exit
          */
-        if(e.getSource()==close_item) {
+        if(actionEvent.getSource() == close) {
+            //exit the program
             System.exit(0);
         }
+
+
+
 
         /**
          * select all
          */
-        if(e.getSource() == select_all) {
-            text_box.selectAll();
+        if(actionEvent.getSource() == select_all) {
+            //select all the text in the text box
+            if(text_box.getText() != "") {
+                text_box.selectAll();
+            } else {
+                JOptionPane.showMessageDialog(null, "Nothing to select!","Empty filed",JOptionPane.ERROR_MESSAGE);
+            }
         }
+
+
+
 
         /**
          * copy
          */
-        if(e.getSource()==cpy_item) {
-            cpytxt=text_box.getSelectedText();
+        if(actionEvent.getSource() == cpy) {
+            //save the text
+            copied_txt = text_box.getSelectedText();
+
+            //show error if the text box is empty
+            if(text_box.getText() == "") {
+                JOptionPane.showMessageDialog(null,"Nothing to copy!","Empty field",JOptionPane.ERROR_MESSAGE);
+            }
         }
+
+
+
 
         /**
          * paste
          */
-        if(e.getSource()==paste_item) {
-            text_box.setText(cpytxt);
+        if(actionEvent.getSource() == paste) {
+            text_box.setText(copied_txt);
         }
+
+
+
 
         /**
          * delete
          */
-        if(e.getSource()==dlt_item) {
-            boolean has_not_content=(text_box.getText()=="") ?
-                    true
-                    :
-                    false
-                    ;
-            if(has_not_content) {
-                JOptionPane.showMessageDialog(null,"Empty field!");
-            }else {
-                text_box.setText("");
-            }
+        if(actionEvent.getSource() == dlt) {
+            text_box.setText("");
         }
 
+
+
         /**
-         * font and color
+         * settings
          */
-        if(e.getSource() == font_settings) {
-            //initialize components
-            family_lbl.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            family_lbl.setForeground(DARK_GRAY);
-            family_lbl.setBounds(10,22,80,20);
-            family_lbl.addMouseListener(this);
+        if(actionEvent.getSource() == settings) {
+            //setting up the components
+            font_section.setFont(new Font("Fira Code",Font.PLAIN,15));
+            font_section.setForeground(new Color(220,220,220));
+            font_section.setBounds(250,50,250,20);
+            font_section.addMouseListener(new MouseListener(){
 
-            font_box.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            font_box.setForeground(DARK_GRAY);
-            font_box.setBorder(null);
-            font_box.setSelectedItem("Ubuntu Mono");
-            font_box.setBounds(55,23,230,20);
-            font_box.addMouseListener(this);
-            font_box.addActionListener(e1 -> {
-                text_box.setFont(new Font((String)font_box.getSelectedItem(),Font.PLAIN,(int)text_box.getFont().getSize()));
-            });
-
-            size_lbl.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            size_lbl.setForeground(DARK_GRAY);
-            size_lbl.setBounds(300,22,60,20);
-            size_lbl.addMouseListener(this);
-
-            size_spin = new JSpinner(size_mdl);
-            size_spin.setBounds(347,23,55,20);
-            size_spin.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            size_spin.setForeground(DARK_GRAY);
-            size_spin.addChangeListener(new ChangeListener() {
+                /**
+                 * @param mouseEvent
+                 */
                 @Override
-                public void stateChanged(ChangeEvent e) {
-                    // TODO Auto-generated method stub
-                    text_box.setFont(new Font((String)text_box.getFont().getFamily(),Font.PLAIN,(int)size_spin.getValue()));
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    font_section.setForeground(Color.white);
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    font_section.setForeground(new Color(220,220,220));
                 }
             });
 
-            color_lbl.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            color_lbl.setForeground(DARK_GRAY);
-            color_lbl.setBounds(417,22,60,20);
-            color_lbl.addMouseListener(this);
+            f_family.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_family.setForeground(new Color(220,220,220));
+            f_family.setBounds(20,130,70,20);
+            f_family.addMouseListener(new MouseListener(){
 
-            color_block.setBounds(470,20,25,25);
-            color_block.setBackground(DARK_GRAY);
-            color_block.setOpaque(true);
-            color_block.setBorder(BorderFactory.createLineBorder(Color.black));
-            color_block.addMouseListener(this);
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
 
-            //Setting up the frame
-            font_config_frame.setBounds(300,300,516,100);
-            font_config_frame.setLayout(null);
-            font_config_frame.setVisible(true);
-            font_config_frame.setResizable(false);
-            font_config_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            font_config_frame.getContentPane().setBackground(Color.white);
-            font_config_frame.add(family_lbl);
-            font_config_frame.add(font_box);
-            font_config_frame.add(size_lbl);
-            font_config_frame.add(size_spin);
-            font_config_frame.add(color_lbl);
-            font_config_frame.add(color_block);
-        }
+                }
 
-        /**
-         * theme
-         */
-        if(e.getSource() == theme_settings){
-            //initialize components
-            theme_lbl.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            theme_lbl.setForeground(Color.DARK_GRAY);
-            theme_lbl.setBounds(34,7,70,20);
-            theme_lbl.addMouseListener(this);
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
 
-            theme_box.setBounds(95,8,100,20);
-            theme_box.setFont(new Font("Ubuntu Mono Regular",Font.PLAIN,13));
-            theme_box.setForeground(Color.DARK_GRAY);
-            theme_box.setBorder(null);
-            theme_box.addActionListener(e1 -> {
-                switch(theme_box.getSelectedIndex()){
-                    case 0:
-                        set_classic_theme();
-                        break;
-                    case 1:
-                        set_dark_theme();
-                        break;
-                    case 2:
-                        set_darker_theme();
-                        break;
-                    case 3:
-                        set_gray_theme();
-                    break;
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    f_family.setForeground(Color.white);
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    f_family.setForeground(new Color(220,220,220));
                 }
             });
-            theme_box.addMouseListener(this);
+
+            font_box.setFont(new Font("Fira Code",Font.PLAIN,15));
+            font_box.setForeground(new Color(230,230,230));
+            font_box.setBackground(new Color(29,29,29));
+            font_box.setSelectedItem("Fira Code");
+            font_box.setBounds(80,129,250,23);
+            font_box.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    font_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    font_box.setBorder(null);
+                }
+            });
+            font_box.addActionListener(e1 -> {
+               text_box.setFont(new Font((String)font_box.getSelectedItem(),Font.PLAIN,(int)text_box.getFont().getSize()));
+            });
+
+            f_size.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_size.setForeground(new Color(220,220,220));
+            f_size.setBounds(360,130,60,20);
+            f_size.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    f_size.setForeground(Color.white);
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    f_size.setForeground(new Color(220,220,220));
+                }
+            });
+
+            size_spinner.setFont(new Font("JetBrains Mono",Font.PLAIN,14));
+            size_spinner.setBounds(423,130,60,20);
+            size_spinner.addChangeListener(new ChangeListener(){
+
+                /**
+                 * @param changeEvent
+                 */
+                @Override
+                public void stateChanged(ChangeEvent changeEvent) {
+                    text_box.setFont(new Font((String)text_box.getFont().getFamily(),Font.PLAIN,(int)size_spinner.getValue()));
+                }
+            });
+
+            f_color.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_color.setForeground(new Color(220,220,220));
+            f_color.setBounds(513,131,80,20);
+            f_color.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    f_color.setForeground(Color.white);
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    f_color.setForeground(new Color(220,220,220));
+                }
+            });
+
+            color_chooser.setBackground(new Color(220,220,220));
+            color_chooser.setOpaque(true);
+            color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+            color_chooser.setBounds(585,130,20,20);
+            color_chooser.addMouseListener(this);
 
             //setting up the frame
-            theme_frame.setBounds(300,300,250,30);
-            theme_frame.setLayout(null);
-            theme_frame.setVisible(true);
-            theme_frame.setResizable(false);
-            theme_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            theme_frame.getContentPane().setBackground(Color.white);
-            theme_frame.add(theme_lbl);
-            theme_frame.add(theme_box);
+            settings_fr.setVisible(true);
+            settings_fr.setBounds(200,200,630,600);
+            settings_fr.setLayout(null);
+            settings_fr.setResizable(false);
+            settings_fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            settings_fr.getContentPane().setBackground(new Color(34,34,34));
+
+            //add the components to the frame
+            settings_fr.add(font_section);
+            settings_fr.add(f_family);
+            settings_fr.add(font_box);
+            settings_fr.add(f_size);
+            settings_fr.add(size_spinner);
+            settings_fr.add(f_color);
+            settings_fr.add(color_chooser);
         }
 
-        /**
-         * Info
-         */
-        if(e.getSource() == info_item){
-            info_lbl.setBounds(120,10,70,20);
-            info_lbl.setForeground(Color.DARK_GRAY);
-            info_lbl.setFont(new Font("Z003",Font.PLAIN,21));
-            info_lbl.addMouseListener(this);
-
-            info_area.setBackground(new Color(250,250,250));
-            info_area.setForeground(Color.DARK_GRAY);
-            info_area.setEditable(false);
-            info_area.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-            info_area.setBounds(0,43,getContentPane().getWidth(),getContentPane().getHeight() - 42);
-            info_area.setCaretColor(new Color(247,247,247));
-            info_area.setText(
-              "\n  > Application name\n TextEditor++\n\n  > Application version\n 1.0.8"
-              + "\n\n  > Date of manifacture\n Friday 01 Novermber 2024\n\n  > Programmer"
-              + "\n Tsvetelin Marinov\n\n  > License\n Free to use"
-            );
-            info_area.addMouseListener(this);
-
-            //setting up the frame
-            info_frame.setBounds(300,300,300,350);
-            info_frame.setVisible(true);
-            info_frame.setLayout(null);
-            info_frame.setResizable(false);
-            info_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            info_frame.getContentPane().setBackground(Color.white);
-            info_frame.add(info_lbl);
-            info_frame.add(info_area);
-        }
     }
+
 
 
 
@@ -585,1860 +840,104 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
     /**
-     *  ---------------------- Mouse Listener ------------------------------
+     * ------------------------ MouseListener ---------------------------------
+     */
+
+    /**
+     * @param mouseEvent
      */
     @Override
-    @SuppressWarnings("static-access")
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-        /**
-         * show color chooser and select a color
-         */
-        if(e.getSource() == color_block){
+    public void mouseClicked(MouseEvent mouseEvent) {
+        //color chooser
+        if(mouseEvent.getSource() == color_chooser) {
             JColorChooser clr_chsr = new JColorChooser();
-            Color color = clr_chsr.showDialog(null,"choose color",Color.DARK_GRAY);
-            text_box.setForeground(color);
-            color_block.setBackground(color);
+            Color clr = clr_chsr.showDialog(null,"pick a color",new Color(220,220,220));
+
+            text_box.setForeground(clr);
+            color_chooser.setBackground(clr);
         }
     }
 
+    /**
+     * @param mouseEvent
+     */
     @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void mousePressed(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent
+     */
     @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void mouseReleased(MouseEvent mouseEvent) {
 
     }
 
+    /**
+     * @param mouseEvent
+     */
     @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void mouseEntered(MouseEvent mouseEvent) {
 
-        /**
-         * File menu
-         */
-        if(e.getSource() == file_menu) {
+        //File menu
+        if(mouseEvent.getSource() == file_menu) {
             file_menu.setForeground(new Color(78,34,160));
         }
 
-        /**
-         * Edit menu
-         */
-        if(e.getSource() == edit_menu) {
+        //Edit menu
+        if(mouseEvent.getSource() == edit_menu) {
             edit_menu.setForeground(new Color(78,34,160));
         }
 
-        /**
-         * Options menu
-         */
-        if(e.getSource() == options_menu) {
+        //Options menu
+        if(mouseEvent.getSource() == options_menu) {
             options_menu.setForeground(new Color(78,34,160));
         }
 
-        /**
-         * About menu
-         */
-        if(e.getSource() == about_menu) {
+        //About menu
+        if(mouseEvent.getSource() == about_menu) {
             about_menu.setForeground(new Color(78,34,160));
         }
 
-        /**
-         * Font box
-         */
-        if(e.getSource()==font_box) {
-            font_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+        //color chooser
+        if(mouseEvent.getSource() == color_chooser) {
+            color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
         }
 
-        /**
-         * Theme box
-         */
-        if(e.getSource() == theme_box) {
-            theme_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-        }
-
-        /**
-         * family label
-         */
-        if(e.getSource() == family_lbl){
-            family_lbl.setForeground(new Color(78,34,160));
-        }
-
-        /**
-         * size label
-         */
-        if(e.getSource() == size_lbl){
-            size_lbl.setForeground(new Color(78,34,160));
-        }
-
-        /**
-         * color label
-         */
-        if(e.getSource() == color_lbl){
-            color_lbl.setForeground(new Color(78,34,160));
-        }
-
-        /**
-         * color block
-         */
-        if(e.getSource() == color_block){
-            color_block.setBorder(BorderFactory.createLineBorder(new Color(78,34,160),1));
-        }
-
-        /**
-         * information label
-         */
-        if(e.getSource() == info_lbl){
-            info_lbl.setForeground(new Color(78,34,160));
-        }
-
-        /**
-         * information text area
-         */
-        if(e.getSource() == info_area){
-            info_area.setForeground(Color.black);
-            info_area.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        }
-
-        /**
-         * theme label
-         */
-        if(e.getSource() == theme_lbl){
-            theme_lbl.setForeground(new Color(78,34,160));
-        }
     }
 
+    /**
+     * @param mouseEvent
+     */
     @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        /**
-         * File menu
-         */
-        if(e.getSource() == file_menu) {
-            file_menu.setForeground(DARK_GRAY);
+    public void mouseExited(MouseEvent mouseEvent) {
+
+        //File menu
+        if(mouseEvent.getSource() == file_menu){
+            file_menu.setForeground(new Color(230,230,230));
         }
 
-        /**
-         * Edit menu
-         */
-        if(e.getSource() == edit_menu) {
-            edit_menu.setForeground(DARK_GRAY);
+        //Edit menu
+        if(mouseEvent.getSource() == edit_menu) {
+            edit_menu.setForeground(new Color(230,230,230));
         }
 
-        /**
-         * Options menu
-         */
-        if(e.getSource() == options_menu) {
-            options_menu.setForeground(DARK_GRAY);
+        //Options menu
+        if(mouseEvent.getSource() == options_menu) {
+            options_menu.setForeground(new Color(230,230,230));
         }
 
-        /**
-         * About menu
-         */
-        if(e.getSource() == about_menu) {
-            about_menu.setForeground(DARK_GRAY);
+        //About menu
+        if(mouseEvent.getSource() == about_menu) {
+            about_menu.setForeground(new Color(230,230,230));
         }
 
-        /**
-         * font box
-         */
-        if(e.getSource()==font_box) {
-            font_box.setBorder(null);
+        //color chooser
+        if(mouseEvent.getSource() == color_chooser) {
+            color_chooser.setBorder(null);
         }
 
-        /**
-         * theme box
-         */
-        if(e.getSource() == theme_box) {
-            theme_box.setBorder(null);
-        }
-
-        /**
-         * font family name label
-         */
-        if(e.getSource() == family_lbl){
-            family_lbl.setForeground(Color.DARK_GRAY);
-        }
-
-        /**
-         * font size label
-         */
-        if(e.getSource() == size_lbl){
-            size_lbl.setForeground(Color.DARK_GRAY);
-        }
-
-        /**
-         * color label
-         */
-        if(e.getSource() == color_lbl){
-            color_lbl.setForeground(Color.DARK_GRAY);
-        }
-
-        /**
-         * color block
-         */
-        if(e.getSource() == color_block){
-            color_block.setBorder(BorderFactory.createLineBorder(Color.black));
-        }
-
-        /**
-         * information label
-         */
-        if(e.getSource() == info_lbl){
-            info_lbl.setForeground(Color.DARK_GRAY);
-        }
-
-        /**
-         * information text area
-         */
-        if(e.getSource() == info_area){
-            info_area.setForeground(Color.DARK_GRAY);
-            info_area.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-        }
-
-        /**
-         * theme name label
-         */
-        if(e.getSource() == theme_lbl){
-            theme_lbl.setForeground(Color.DARK_GRAY);
-        }
-    }
-
-
-
-
-
-
-    /**
-     * -------------------------- Themes ----------------------------------
-     */
-
-
-
-
-    /**
-     * -------------------------- Classic theme ----------------------------
-     */
-    public void set_classic_theme() {
-        getContentPane().setBackground(Color.white);
-
-        menu_bar.setBackground(Color.white);
-
-        text_box.setForeground(Color.black);
-        text_box.setBackground(Color.white);
-        text_box.setCaretColor(Color.DARK_GRAY);
-
-        file_menu.setBackground(Color.white);
-        file_menu.setForeground(Color.DARK_GRAY);
-        file_menu.addMouseListener(new MouseListener(){
-            @Override
-            public void mousePressed(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent ms_evnt){
-                file_menu.setForeground(new Color(78,34,160));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent ms_evnt){
-                file_menu.setForeground(Color.DARK_GRAY);
-            }
-        });
-
-        edit_menu.setForeground(Color.DARK_GRAY);
-        edit_menu.setBackground(Color.white);
-        edit_menu.addMouseListener(new MouseListener(){
-            @Override
-            public void mousePressed(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent ms_evnt){
-                edit_menu.setForeground(new Color(78,34,160));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent ms_evnt){
-                edit_menu.setForeground(Color.DARK_GRAY);
-            }
-
-        });
-
-        options_menu.setBackground(Color.white);
-        options_menu.setForeground(Color.DARK_GRAY);
-        options_menu.addMouseListener(new MouseListener(){
-            @Override
-            public void mousePressed(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent ms_evnt){
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent ms_evnt){
-                options_menu.setForeground(Color.DARK_GRAY);
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent ms_evnt){
-                options_menu.setForeground(new Color(78,34,160));
-            }
-        });
-
-        about_menu.setBackground(Color.white);
-        about_menu.setForeground(Color.DARK_GRAY);
-        about_menu.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                about_menu.setForeground(new Color(78,34,160));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                about_menu.setForeground(Color.DARK_GRAY);
-            }
-
-        });
-
-        load_item.setBackground(Color.white);
-        load_item.setForeground(Color.DARK_GRAY);
-
-        export_item.setBackground(Color.white);
-        export_item.setForeground(Color.DARK_GRAY);
-
-        new_window_item.setBackground(Color.white);
-        new_window_item.setForeground(Color.DARK_GRAY);
-
-        close_item.setBackground(Color.white);
-        close_item.setForeground(Color.DARK_GRAY);
-
-        select_all.setForeground(Color.DARK_GRAY);
-        select_all.setBackground(Color.white);
-
-        cpy_item.setBackground(Color.white);
-        cpy_item.setForeground(Color.DARK_GRAY);
-
-        paste_item.setBackground(Color.white);
-        paste_item.setForeground(Color.DARK_GRAY);
-
-        dlt_item.setBackground(Color.white);
-        dlt_item.setForeground(Color.DARK_GRAY);
-
-        font_settings.setBackground(Color.white);
-        font_settings.setForeground(Color.DARK_GRAY);
-
-        theme_settings.setBackground(Color.white);
-        theme_settings.setForeground(Color.DARK_GRAY);
-
-        info_item.setBackground(Color.white);
-        info_item.setForeground(Color.DARK_GRAY);
-
-        text_box.setBackground(Color.white);
-
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-
-        font_config_frame.getContentPane().setBackground(Color.white);
-
-        family_lbl.setForeground(Color.DARK_GRAY);
-        family_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                family_lbl.setForeground(new Color(78,34,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                family_lbl.setForeground(Color.DARK_GRAY);
-            }
-        });
-
-        font_box.setBackground(Color.white);
-        font_box.setForeground(Color.DARK_GRAY);
-        font_box.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                font_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                font_box.setBorder(null);
-            }
-
-        });
-
-        size_lbl.setForeground(Color.DARK_GRAY);
-        size_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                size_lbl.setForeground(new Color(78,34,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                size_lbl.setForeground(new Color(78,34,160));
-            }
-        });
-
-        size_spin.setBackground(Color.white);
-        size_spin.setForeground(Color.DARK_GRAY);
-
-        color_lbl.setForeground(Color.DARK_GRAY);
-        color_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                color_lbl.setForeground(new Color(78,34,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                color_lbl.setForeground(Color.DARK_GRAY);
-            }
-        });
-
-        theme_frame.getContentPane().setBackground(Color.white);
-
-        theme_lbl.setForeground(Color.DARK_GRAY);
-        theme_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_lbl.setForeground(new Color(78,34,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_lbl.setForeground(Color.DARK_GRAY);
-            }
-        });
-
-        theme_box.setForeground(Color.DARK_GRAY);
-        theme_box.setBackground(Color.white);
-        theme_box.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                theme_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                theme_box.setBorder(null);
-            }
-
-        });
-
-        info_frame.getContentPane().setBackground(Color.white);
-
-        info_lbl.setForeground(Color.DARK_GRAY);
-
-        info_area.setBackground(new Color(251,251,251));
-        info_area.setForeground(Color.black);
-    }
-
-
-
-
-    /**
-     * ----------------------- Dark theme ------------------------------------
-     */
-    public void set_dark_theme(){
-        getContentPane().setBackground(Color.DARK_GRAY);
-
-        menu_bar.setBackground(Color.DARK_GRAY);
-
-        scroll.setBorder(BorderFactory.createLineBorder(Color.cyan));
-
-        text_box.setBackground(new Color(40,40,40));
-        text_box.setForeground(Color.white);
-        text_box.setCaretColor(Color.white);
-
-        file_menu.setBackground(Color.DARK_GRAY);
-        file_menu.setForeground(Color.white);
-        file_menu.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                file_menu.setForeground(Color.cyan);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                file_menu.setForeground(Color.white);
-            }
-        });
-
-        edit_menu.setBackground(Color.DARK_GRAY);
-        edit_menu.setForeground(Color.white);
-        edit_menu.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                edit_menu.setForeground(Color.cyan);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                edit_menu.setForeground(Color.white);
-            }
-        });
-
-        options_menu.setBackground(Color.DARK_GRAY);
-        options_menu.setForeground(Color.white);
-        options_menu.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                options_menu.setForeground(Color.cyan);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                options_menu.setForeground(Color.white);
-            }
-        });
-
-        about_menu.setBackground(Color.DARK_GRAY);
-        about_menu.setForeground(Color.white);
-        about_menu.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                about_menu.setForeground(Color.cyan);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                about_menu.setForeground(Color.white);
-            }
-        });
-
-        load_item.setBackground(Color.DARK_GRAY);
-        load_item.setForeground(Color.white);
-
-        export_item.setBackground(Color.DARK_GRAY);
-        export_item.setForeground(Color.white);
-
-        new_window_item.setBackground(Color.DARK_GRAY);
-        new_window_item.setForeground(Color.white);
-
-        close_item.setBackground(Color.DARK_GRAY);
-        close_item.setForeground(Color.white);
-
-        select_all.setBackground(Color.DARK_GRAY);
-        select_all.setForeground(Color.white);
-
-        cpy_item.setBackground(Color.DARK_GRAY);
-        cpy_item.setForeground(Color.white);
-
-        paste_item.setBackground(Color.DARK_GRAY);
-        paste_item.setForeground(Color.white);
-
-        dlt_item.setBackground(Color.DARK_GRAY);
-        dlt_item.setForeground(Color.white);
-
-        font_settings.setBackground(Color.DARK_GRAY);
-        font_settings.setForeground(Color.white);
-
-        theme_settings.setBackground(Color.DARK_GRAY);
-        theme_settings.setForeground(Color.white);
-
-        info_item.setBackground(Color.DARK_GRAY);
-        info_item.setForeground(Color.white);
-
-        font_config_frame.getContentPane().setBackground(Color.DARK_GRAY);
-
-        family_lbl.setForeground(Color.white);
-
-        font_box.setBackground(new Color(25,25,25));
-        font_box.setForeground(Color.white);
-        font_box.setBorder(BorderFactory.createLineBorder(Color.cyan));
-        font_box.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                font_box.setBorder(BorderFactory.createLineBorder(Color.black));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                font_box.setBorder(null);
-            }
-        });
-
-        size_lbl.setForeground(Color.white);
-
-        size_spin.setBackground(Color.DARK_GRAY);
-        size_spin.setForeground(Color.white);
-        size_spin.setBorder(BorderFactory.createLineBorder(Color.cyan));
-
-        color_lbl.setForeground(Color.white);
-
-        color_block.setBorder(BorderFactory.createLineBorder(Color.cyan));
-
-        theme_frame.getContentPane().setBackground(Color.DARK_GRAY);
-
-        theme_lbl.setForeground(Color.white);
-        theme_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_lbl.setForeground(Color.cyan);
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_lbl.setForeground(Color.white);
-            }
-        });
-
-        theme_box.setBackground(new Color(30,30,30));
-        theme_box.setForeground(Color.white);
-        theme_box.addMouseListener(new MouseListener(){
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_box.setBorder(BorderFactory.createLineBorder(Color.cyan));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_box.setBorder(null);
-            }
-        });
-
-        info_frame.getContentPane().setBackground(Color.DARK_GRAY);
-
-        info_lbl.setForeground(Color.white);
-
-        info_area.setBackground(new Color(27,27,27));
-        info_area.setForeground(Color.white);
-        info_area.setCaretColor(new Color(27,27,27));
-    }
-
-
-
-
-    /**
-     * ---------------------- Gray theme --------------------------------
-     */
-    public void set_gray_theme(){
-        getContentPane().setBackground(new Color(240,240,240));
-
-        text_box.setBackground(new Color(236,236,236));
-
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(66,0,200)));
-
-        menu_bar.setBackground(new Color(240,240,240));
-
-        file_menu.setForeground(Color.black);
-        file_menu.setBackground(new Color(220,220,220));
-        file_menu.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                file_menu.setForeground(new Color(66,0,200));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                file_menu.setForeground(Color.black);
-            }
-
-        });
-
-        edit_menu.setForeground(Color.black);
-        edit_menu.setBackground(new Color(220,220,220));
-        edit_menu.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                // TODO Auto-generated method stub
-                edit_menu.setForeground(new Color(66,0,200));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                // TODO Auto-generated method stub
-                edit_menu.setForeground(Color.black);
-            }
-
-        });
-
-        options_menu.setForeground(Color.black);
-        options_menu.setBackground(new Color(220,220,220));
-        options_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                options_menu.setForeground(new Color(66,0,200));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                options_menu.setForeground(Color.black);
-            }
-        });
-
-        about_menu.setForeground(Color.black);
-        about_menu.setBackground(new Color(220,220,220));
-        about_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                about_menu.setForeground(new Color(66,0,200));
-            }
-
-            /**
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                about_menu.setForeground(Color.black);
-            }
-        });
-
-        font_box.setForeground(Color.black);
-        font_box.setBackground(Color.white);
-        font_box.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                font_box.setBorder(BorderFactory.createLineBorder(new Color(66,0,200)));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                font_box.setBorder(null);
-            }
-        });
-
-        theme_box.setBackground(Color.white);
-        theme_box.setForeground(Color.black);
-        theme_box.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_box.setBorder(BorderFactory.createLineBorder(new Color(66,0,200)));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_box.setBorder(null);
-            }
-        });
-
-        theme_lbl.setForeground(Color.black);
-        theme_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_lbl.setForeground(new Color(66,0,200));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_lbl.setForeground(Color.black);
-            }
-        });
-
-        theme_frame.getContentPane().setBackground(new Color(236,236,236));
-
-        load_item.setForeground(Color.black);
-        load_item.setBackground(new Color(220,220,220));
-
-        export_item.setForeground(Color.black);
-        export_item.setBackground(new Color(220,220,220));
-
-        new_window_item.setForeground(Color.black);
-        new_window_item.setBackground(new Color(220,220,220));
-
-        close_item.setForeground(Color.black);
-        close_item.setBackground(new Color(220,220,220));
-
-        select_all.setForeground(Color.black);
-        select_all.setBackground(new Color(220,220,220));
-        cpy_item.setForeground(Color.black);
-        cpy_item.setBackground(new Color(220,220,220));
-
-        paste_item.setForeground(Color.black);
-        paste_item.setBackground(new Color(220,220,220));
-
-        dlt_item.setForeground(Color.black);
-        dlt_item.setBackground(new Color(220,220,220));
-
-        font_settings.setForeground(Color.black);
-        font_settings.setBackground(new Color(220,220,220));
-
-        theme_settings.setBackground(new Color(220,220,220));
-        theme_settings.setForeground(Color.black);
-
-        info_item.setForeground(Color.black);
-        info_item.setBackground(new Color(220,220,220));
-    }
-
-
-
-
-    /**
-     * ---------------------- Darker theme -------------------------------------
-     */
-    public void set_darker_theme(){
-        getContentPane().setBackground(new Color(20,20,20));
-
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(160,90,160)));
-
-        text_box.setBackground(new Color(20, 20, 20));
-        text_box.setForeground(new Color(220, 220, 240));
-        text_box.setCaretColor(Color.yellow);
-
-        menu_bar.setBackground(new Color(20,20,20));
-
-        file_menu.setForeground(new Color(220,220,240));
-        file_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                file_menu.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                file_menu.setForeground(new Color(220,220,240));
-            }
-        });
-
-        edit_menu.setForeground(new Color(220,220,240));
-        edit_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                edit_menu.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                edit_menu.setForeground(new Color(220,220,240));
-            }
-        });
-
-        options_menu.setForeground(new Color(220,220,240));
-        options_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                options_menu.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                options_menu.setForeground(new Color(220,220,240));
-            }
-        });
-
-        about_menu.setForeground(new Color(220,220,240));
-        about_menu.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                about_menu.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                about_menu.setForeground(new Color(220,220,240));
-            }
-        });
-
-        theme_frame.getContentPane().setBackground(new Color(20,20,20));
-
-        theme_lbl.setForeground(new Color(230,230,230));
-        theme_lbl.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                theme_lbl.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_lbl.setForeground(new Color(160,90,160));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_lbl.setForeground(new Color(230,230,230));
-            }
-        });
-
-        theme_box.setBackground(new Color(20,20,20));
-        theme_box.setForeground(Color.white);
-        theme_box.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                theme_box.setBorder(BorderFactory.createLineBorder(new Color(160,90,160)));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                theme_box.setBorder(null);
-            }
-        });
-
-        font_box.addMouseListener(new MouseListener(){
-
-            /**
-             * Invoked when the mouse button has been clicked (pressed
-             * and released) on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been pressed on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when a mouse button has been released on a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            /**
-             * Invoked when the mouse enters a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                font_box.setBorder(BorderFactory.createLineBorder(new Color(160,90,160)));
-            }
-
-            /**
-             * Invoked when the mouse exits a component.
-             *
-             * @param e the event to be processed
-             */
-            @Override
-            public void mouseExited(MouseEvent e) {
-                font_box.setBorder(null);
-            }
-        });
-
-        theme_frame.getContentPane().setBackground(new Color(20,20,20));
-
-        load_item.setBackground(new Color(20,20,20));
-        load_item.setForeground(Color.white);
-
-        export_item.setBackground(new Color(20,20,20));
-        export_item.setForeground(Color.white);
-
-        new_window_item.setBackground(new Color(20,20,20));
-        new_window_item.setForeground(Color.white);
-
-        close_item.setBackground(new Color(20,20,20));
-        close_item.setForeground(Color.white);
-
-        select_all.setBackground(new Color(20,20,20));
-        select_all.setForeground(Color.white);
-
-        cpy_item.setBackground(new Color(20,20,20));
-        cpy_item.setForeground(Color.white);
-
-        paste_item.setBackground(new Color(20,20,20));
-        paste_item.setForeground(Color.white);
-
-        dlt_item.setBackground(new Color(20,20,20));
-        dlt_item.setForeground(Color.white);
-
-        font_settings.setBackground(new Color(20,20,20));
-        font_settings.setForeground(Color.white);
-
-        theme_settings.setBackground(new Color(20,20,20));
-        theme_settings.setForeground(Color.white);
-
-        info_item.setBackground(new Color(20,20,20));
-        info_item.setForeground(Color.white);
     }
 
 }
