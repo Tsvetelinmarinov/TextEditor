@@ -1,5 +1,6 @@
 
 
+
 /**
  * TextEditor++
  *  Application
@@ -721,7 +722,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
             font_box.addActionListener(e1 -> {
-               text_box.setFont(new Font((String)font_box.getSelectedItem(),Font.PLAIN,(int)text_box.getFont().getSize()));
+                text_box.setFont(new Font((String)font_box.getSelectedItem(),Font.PLAIN,(int)text_box.getFont().getSize()));
             });
 
             f_size.setFont(new Font("Liberation Mono",Font.PLAIN,14));
@@ -935,49 +936,49 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             theme_box.setBounds(180,275,150,30);
             theme_box.addMouseListener(new MouseListener() {
 
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    // TODO Auto-generated method stub
 
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+                }
 
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    // TODO Auto-generated method stub
 
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-					theme_box.setBorder(new LineBorder(new Color(78,34,160)));
-				}
+                }
 
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-					theme_box.setBorder(new LineBorder(new Color(29,29,29)));
-				}
-            	
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    // TODO Auto-generated method stub
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    theme_box.setBorder(new LineBorder(new Color(78,34,160)));
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    // TODO Auto-generated method stub
+                    theme_box.setBorder(new LineBorder(new Color(29,29,29)));
+                }
+
             });
             theme_box.addActionListener(e1 -> {
-            	switch(theme_box.getSelectedIndex()) {
-            	case 0:
-            		set_classic_theme();
-            		break;
-            	case 1:
-            		set_dark_theme();
-            		break;
-            	case 2:
-            		set_gray_theme();
-            		break;
-            	}
+                switch(theme_box.getSelectedIndex()) {
+                    case 0:
+                        set_classic_theme();
+                        break;
+                    case 1:
+                        set_dark_theme();
+                        break;
+                    case 2:
+                        set_gray_theme();
+                        break;
+                }
             });
 
             menu_bar_color.setFont(new Font("Liberation Mono",Font.PLAIN,14));
@@ -1104,13 +1105,13 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             info_box.setEditable(false);
             info_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
             info_box.setText(
-              "\n Application version\n"
-              + "  1.0.0\n\n License\n"
-              + "  free to use\n\n Date of manifacture\n"
-              + "  Friday 8 November 2024\n\n Programmer\n"
-              + "  Tsvetelin Marinov\n\n Company\n  none\n\n"
-              + " Description\n  Text editor for everyday use\n"
-              + "  works with basic programming files and text files\n"
+                    "\n Application version\n"
+                            + "  1.0.0\n\n License\n"
+                            + "  free to use\n\n Date of manifacture\n"
+                            + "  Friday 8 November 2024\n\n Programmer\n"
+                            + "  Tsvetelin Marinov\n\n Company\n  none\n\n"
+                            + " Description\n  Text editor for everyday use\n"
+                            + "  works with basic programming files and text files\n"
             );
             info_box.addMouseListener(new MouseListener(){
 
@@ -1364,7 +1365,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         if(mouseEvent.getSource() == app_background_color_chooser) {
             app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
         }
-        
+
     }
 
 
@@ -1745,645 +1746,891 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 font_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
             }
         });
-        
+
         f_size.setForeground(new Color(220,220,220));
         f_size.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				f_size.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				f_size.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                f_size.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                f_size.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         f_color.setForeground(new Color(220,220,220));
         f_color.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				f_color.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				f_color.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                f_color.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                f_color.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
         color_chooser.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+            }
+
         });
-        
+
         theme_section.setForeground(new Color(220,220,220));
         theme_section.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme_section.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme_section.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme_section.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme_section.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         theme.setForeground(new Color(220,220,220));
         theme.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         theme_box.setBackground(new Color(29,29,29));
         theme_box.setForeground(new Color(230,230,230));
         theme_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
         theme_box.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme_box.setBorder(new LineBorder(new Color(78,34,160)));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				theme_box.setBorder(new LineBorder(new Color(29,29,29)));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme_box.setBorder(new LineBorder(new Color(78,34,160)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                theme_box.setBorder(new LineBorder(new Color(29,29,29)));
+            }
+
         });
-        
+
         menu_bar_color.setForeground(new Color(220,220,220));
         menu_bar_color.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				menu_bar_color.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				menu_bar_color.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                menu_bar_color.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                menu_bar_color.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         menu_background_chooser.setBorder(new LineBorder(new Color(220,220,220)));
         menu_background_chooser.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				menu_background_chooser.setBorder(new LineBorder(new Color(78,34,160)));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				menu_background_chooser.setBorder(new LineBorder(new Color(220,220,220)));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                menu_background_chooser.setBorder(new LineBorder(new Color(78,34,160)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                menu_background_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+            }
+
         });
-        
+
         text_box_background.setForeground(new Color(220,220,220));
         text_box_background.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				text_box_background.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				text_box_background.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                text_box_background.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                text_box_background.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         text_box_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
         text_box_color_chooser.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				text_box_color_chooser.setBorder(new LineBorder(new Color(78,34,160)));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				text_box_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                text_box_color_chooser.setBorder(new LineBorder(new Color(78,34,160)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                text_box_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+            }
+
         });
-        
+
         app_background.setForeground(new Color(220,220,220));
         app_background.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				app_background.setForeground(new Color(78,34,160));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				app_background.setForeground(new Color(220,220,220));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                app_background.setForeground(new Color(78,34,160));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                app_background.setForeground(new Color(220,220,220));
+            }
+
         });
-        
+
         app_background_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
         app_background_color_chooser.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				app_background_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                app_background_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+            }
+
         });
-        
+
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     /**
      * Classic theme
      */
     public void set_classic_theme() {
-    	getContentPane().setBackground(Color.white);
-    	
+        getContentPane().setBackground(Color.white);
+
         menu_bar.setBackground(Color.white);
-        
+
         scroll.setBorder(BorderFactory.createLineBorder(new Color(200,30,150)));
-        
+
         text_box.setBackground(Color.white);
         text_box.setForeground(Color.DARK_GRAY);
         text_box.setCaretColor(Color.black);
-        
+
         file_menu.setForeground(Color.DARK_GRAY);
         file_menu.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				file_menu.setForeground(new Color(200,30,150));
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				file_menu.setForeground(Color.DARK_GRAY);
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                file_menu.setForeground(new Color(200,30,150));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                file_menu.setForeground(Color.DARK_GRAY);
+            }
+
         });
-        
+
         Color alfa_c = new Color(200,30,150);
-        
+
         edit_menu.setForeground(Color.DARK_GRAY);
         edit_menu.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				edit_menu.setForeground(alfa_c);
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				edit_menu.setForeground(Color.DARK_GRAY);
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                edit_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                edit_menu.setForeground(Color.DARK_GRAY);
+            }
+
         });
-        
+
         options_menu.setForeground(Color.DARK_GRAY);
         options_menu.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				options_menu.setForeground(alfa_c);
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				options_menu.setForeground(Color.DARK_GRAY);
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                options_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                options_menu.setForeground(Color.DARK_GRAY);
+            }
+
         });
-        
+
         about_menu.setForeground(Color.DARK_GRAY);
         about_menu.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            }
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				about_menu.setForeground(alfa_c);
-			}
+            }
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				about_menu.setForeground(Color.DARK_GRAY);
-			}
-        	
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                about_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                about_menu.setForeground(Color.DARK_GRAY);
+            }
+
         });
-        
+
         new_file.setBackground(Color.white);
         new_file.setForeground(Color.DARK_GRAY);
-        
+
         load.setBackground(Color.white);
         load.setForeground(Color.DARK_GRAY);
-        
+
         export.setBackground(Color.white);
         export.setForeground(Color.DARK_GRAY);
-        
+
         new_window.setBackground(Color.white);
         new_window.setForeground(Color.DARK_GRAY);
-        
+
         reboot.setBackground(Color.white);
         reboot.setForeground(Color.DARK_GRAY);
-        
+
         close.setBackground(Color.white);
         close.setForeground(Color.DARK_GRAY);
-        
+
         select_all.setBackground(Color.white);
         select_all.setForeground(Color.DARK_GRAY);
-        
+
         cpy.setBackground(Color.white);
         cpy.setForeground(Color.DARK_GRAY);
-        
+
         paste.setBackground(Color.white);
         paste.setForeground(Color.DARK_GRAY);
-        
+
         dlt.setBackground(Color.white);
         dlt.setForeground(Color.DARK_GRAY);
+
+        settings.setBackground(Color.white);
+        settings.setForeground(Color.DARK_GRAY);
+
+        info.setBackground(Color.white);
+        info.setForeground(Color.DARK_GRAY);
+
+        settings_fr.getContentPane().setBackground(Color.white);
+
+        font_section.setForeground(Color.DARK_GRAY);
+        font_section.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                font_section.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                font_section.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        f_family.setForeground(Color.DARK_GRAY);
+        f_family.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_family.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_family.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        font_box.setBackground(Color.white);
+        font_box.setForeground(Color.DARK_GRAY);
+        font_box.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        font_box.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                font_box.setBorder(BorderFactory.createLineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                font_box.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        f_size.setForeground(Color.DARK_GRAY);
+        f_size.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_size.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_size.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        f_color.setForeground(Color.DARK_GRAY);
+        f_color.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_color.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_color.setForeground(Color.DARK_GRAY);
+            }
+        });
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     /**
-     * Gray theme 
+     * Gray theme
      */
     public void set_gray_theme() {
-    	
+
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
