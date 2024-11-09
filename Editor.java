@@ -2455,7 +2455,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
 
         font_box.setBackground(Color.white);
         font_box.setForeground(Color.DARK_GRAY);
-        font_box.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        font_box.setBorder(BorderFactory.createLineBorder(Color.white));
         font_box.addMouseListener(new MouseListener(){
 
             /**
@@ -2506,7 +2506,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                font_box.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+                font_box.setBorder(BorderFactory.createLineBorder(Color.white));
             }
         });
 
@@ -2619,6 +2619,563 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 f_color.setForeground(Color.DARK_GRAY);
             }
         });
+
+        color_chooser.setBackground(Color.DARK_GRAY);
+        color_chooser.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                color_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        theme_section.setForeground(Color.DARK_GRAY);
+        theme_section.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme_section.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme_section.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        theme.setForeground(Color.DARK_GRAY);
+        theme.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        theme_box.setBackground(Color.white);
+        theme_box.setForeground(Color.DARK_GRAY);
+        theme_box.setBorder(BorderFactory.createLineBorder(Color.white));
+        theme_box.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme_box.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme_box.setBorder(new LineBorder(Color.white));
+            }
+        });
+
+        menu_bar_color.setForeground(Color.DARK_GRAY);
+        menu_bar_color.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                menu_bar_color.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                menu_bar_color.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        menu_background_chooser.setBackground(Color.white);
+        menu_background_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        menu_background_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                menu_background_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                menu_background_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        text_box_background.setForeground(Color.DARK_GRAY);
+        text_box_background.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                text_box_background.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                text_box_background.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        text_box_color_chooser.setBackground(Color.white);
+        text_box_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        text_box_color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                text_box_color_chooser.setBorder(BorderFactory.createLineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                text_box_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        app_background.setForeground(Color.DARK_GRAY);
+        app_background.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                app_background.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                app_background.setForeground(Color.DARK_GRAY);
+            }
+        });
+
+        app_background_color_chooser.setBackground(Color.white);
+        app_background_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        app_background_color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                app_background_color_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                app_background_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
     }
 
 
@@ -2629,8 +3186,1003 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
      * Gray theme
      */
     public void set_gray_theme() {
+        Color alfa_c = new Color(0,60,200);
+        Color gray_alfa = new Color(200,200,200);
+
+        getContentPane().setBackground(new Color(200,200,200));
+
+        menu_bar.setBackground(gray_alfa);
+
+        scroll.setBorder(BorderFactory.createLineBorder(alfa_c));
+
+        text_box.setBackground(gray_alfa);
+        text_box.setForeground(Color.black);
+        text_box.setCaretColor(Color.black);
+
+        file_menu.setForeground(Color.black);
+        file_menu.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                file_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                file_menu.setForeground(Color.black);
+            }
+
+        });
+
+        edit_menu.setForeground(Color.black);
+        edit_menu.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                edit_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                edit_menu.setForeground(Color.black);
+            }
+
+        });
+
+        options_menu.setForeground(Color.black);
+        options_menu.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                options_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                options_menu.setForeground(Color.black);
+            }
+
+        });
+
+        about_menu.setForeground(Color.black);
+        about_menu.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+                about_menu.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                about_menu.setForeground(Color.black);
+            }
+
+        });
+
+        new_file.setBackground(gray_alfa);
+        new_file.setForeground(Color.black);
+
+        load.setBackground(gray_alfa);
+        load.setForeground(Color.black);
+
+        export.setBackground(gray_alfa);
+        export.setForeground(Color.black);
+
+        new_window.setBackground(gray_alfa);
+        new_window.setForeground(Color.black);
+
+        reboot.setBackground(gray_alfa);
+        reboot.setForeground(Color.black);
+
+        close.setBackground(gray_alfa);
+        close.setForeground(Color.black);
+
+        select_all.setBackground(gray_alfa);
+        select_all.setForeground(Color.black);
+
+        cpy.setBackground(gray_alfa);
+        cpy.setForeground(Color.black);
+
+        paste.setBackground(gray_alfa);
+        paste.setForeground(Color.black);
+
+        dlt.setBackground(gray_alfa);
+        dlt.setForeground(Color.black);
+
+        settings.setBackground(gray_alfa);
+        settings.setForeground(Color.black);
+
+        info.setBackground(gray_alfa);
+        info.setForeground(Color.black);
+
+        settings_fr.getContentPane().setBackground(gray_alfa);
+
+        font_section.setForeground(Color.black);
+        font_section.addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                font_section.setForeground(alfa_c);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                font_section.setForeground(Color.black);
+            }
+        });
+
+        f_family.setForeground(Color.black);
+        f_family.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_family.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_family.setForeground(Color.black);
+            }
+        });
+
+        font_box.setBackground(gray_alfa);
+        font_box.setForeground(Color.black);
+        font_box.setBorder(BorderFactory.createLineBorder(Color.white));
+        font_box.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                font_box.setBorder(BorderFactory.createLineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                font_box.setBorder(BorderFactory.createLineBorder(Color.white));
+            }
+        });
+
+        f_size.setForeground(Color.black);
+        f_size.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_size.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_size.setForeground(Color.black);
+            }
+        });
+
+        f_color.setForeground(Color.black);
+        f_color.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                f_color.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                f_color.setForeground(Color.black);
+            }
+        });
+
+        color_chooser.setBackground(Color.black);
+        color_chooser.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                color_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        theme_section.setForeground(Color.black);
+        theme_section.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme_section.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme_section.setForeground(Color.black);
+            }
+        });
+
+        theme.setForeground(Color.black);
+        theme.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme.setForeground(Color.black);
+            }
+        });
+
+        theme_box.setBackground(gray_alfa);
+        theme_box.setForeground(Color.black);
+        theme_box.setBorder(BorderFactory.createLineBorder(Color.white));
+        theme_box.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                theme_box.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                theme_box.setBorder(new LineBorder(Color.white));
+            }
+        });
+
+        menu_bar_color.setForeground(Color.black);
+        menu_bar_color.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                menu_bar_color.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                menu_bar_color.setForeground(Color.black);
+            }
+        });
+
+        menu_background_chooser.setBackground(gray_alfa);
+        menu_background_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        menu_background_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                menu_background_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                menu_background_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        text_box_background.setForeground(Color.black);
+        text_box_background.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                text_box_background.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                text_box_background.setForeground(Color.black);
+            }
+        });
+
+        text_box_color_chooser.setBackground(gray_alfa);
+        text_box_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        text_box_color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                text_box_color_chooser.setBorder(BorderFactory.createLineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                text_box_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
+
+        app_background.setForeground(Color.black);
+        app_background.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                app_background.setForeground(alfa_c);
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                app_background.setForeground(Color.black);
+            }
+        });
+
+        app_background_color_chooser.setBackground(gray_alfa);
+        app_background_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+        app_background_color_chooser.addMouseListener(new MouseListener(){
+
+            /**
+             * Invoked when the mouse button has been clicked (pressed
+             * and released) on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been pressed on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when a mouse button has been released on a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            /**
+             * Invoked when the mouse enters a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                app_background_color_chooser.setBorder(new LineBorder(alfa_c));
+            }
+
+            /**
+             * Invoked when the mouse exits a component.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                app_background_color_chooser.setBorder(new LineBorder(Color.DARK_GRAY));
+            }
+        });
 
     }
-
-
 }
