@@ -1,10 +1,11 @@
 
+
 /**
  * TextEditor++
  *  Application
  */
 
-//no package
+package appdata;
 
 
 
@@ -168,7 +169,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     Editor(){
 
         //Text box
-        text_box.setFont(new Font("Fira Code",Font.PLAIN,19));
+        text_box.setFont(new Font("Liberation Mono",Font.PLAIN,19));
         text_box.setForeground(new Color(220,220,220));
         text_box.setBackground(new Color(25,25,25));
         text_box.setBorder(null);
@@ -184,38 +185,38 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         //main menu bar
         menu_bar.setBackground(new Color(29,29,29));
         menu_bar.setBorder(null);
-        menu_bar.setBounds(0,0,216,32);
+        menu_bar.setBounds(0,0,230,32);
 
         //File menu
-        file_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        file_menu.setFont(new Font("Liberation Mono",Font.PLAIN,16));
         file_menu.setForeground(new Color(230,230,230));
         file_menu.setBorder(null);
         file_menu.addMouseListener(this);
         menu_bar.add(file_menu);
 
         //Edit menu
-        edit_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        edit_menu.setFont(new Font("Liberation Mono",Font.PLAIN,16));
         edit_menu.setForeground(new Color(240,240,240));
         edit_menu.setBorder(null);
         edit_menu.addMouseListener(this);
         menu_bar.add(edit_menu);
 
         //Options menu
-        options_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        options_menu.setFont(new Font("Liberation Mono",Font.PLAIN,16));
         options_menu.setForeground(new Color(230,230,230));
         options_menu.setBorder(null);
         options_menu.addMouseListener(this);
         menu_bar.add(options_menu);
 
         //About menu
-        about_menu.setFont(new Font("Hack",Font.PLAIN,15));
+        about_menu.setFont(new Font("Liberation Mono",Font.PLAIN,16));
         about_menu.setForeground(new Color(220,220,220));
         about_menu.setBorder(null);
         about_menu.addMouseListener(this);
         menu_bar.add(about_menu);
 
         //new file
-        new_file.setFont(new Font("Fira Code",Font.PLAIN,14));
+        new_file.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         new_file.setForeground(new Color(230,230,230));
         new_file.setBackground(new Color(34,34,34));
         new_file.setBorder(null);
@@ -223,7 +224,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(new_file);
 
         //open
-        load.setFont(new Font("Fira Code",Font.PLAIN,14));
+        load.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         load.setForeground(new Color(230,230,230));
         load.setBackground(new Color(34,34,34));
         load.setBorder(null);
@@ -231,7 +232,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(load);
 
         //save
-        export.setFont(new Font("Fira Code",Font.PLAIN,14));
+        export.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         export.setForeground(new Color(230,230,230));
         export.setBackground(new Color(34,34,34));
         export.setBorder(null);
@@ -239,7 +240,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(export);
 
         //new window
-        new_window.setFont(new Font("Fira Code",Font.PLAIN,14));
+        new_window.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         new_window.setForeground(new Color(230,230,230));
         new_window.setBackground(new Color(34,34,34));
         new_window.setBorder(null);
@@ -247,7 +248,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(new_window);
 
         //restart
-        reboot.setFont(new Font("Fira Code",Font.PLAIN,14));
+        reboot.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         reboot.setForeground(new Color(230,230,230));
         reboot.setBackground(new Color(34,34,34));
         reboot.setBorder(null);
@@ -255,7 +256,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(reboot);
 
         //exit
-        close.setFont(new Font("Fira Code",Font.PLAIN,14));
+        close.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         close.setForeground(new Color(230,230,230));
         close.setBackground(new Color(34,34,34));
         close.setBorder(null);
@@ -263,7 +264,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         file_menu.add(close);
 
         //select all
-        select_all.setFont(new Font("Fira Code",Font.PLAIN,14));
+        select_all.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         select_all.setForeground(new Color(230,230,230));
         select_all.setBackground(new Color(34,34,34));
         select_all.setBorder(null);
@@ -271,7 +272,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         edit_menu.add(select_all);
 
         //copy
-        cpy.setFont(new Font("Fira Code",Font.PLAIN,14));
+        cpy.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         cpy.setForeground(new Color(230,230,230));
         cpy.setBackground(new Color(34,34,34));
         cpy.setBorder(null);
@@ -279,7 +280,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         edit_menu.add(cpy);
 
         //paste
-        paste.setFont(new Font("Fira Code",Font.PLAIN,14));
+        paste.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         paste.setForeground(new Color(230,230,230));
         paste.setBackground(new Color(34,34,34));
         paste.setBorder(null);
@@ -287,7 +288,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         edit_menu.add(paste);
 
         //delete
-        dlt.setFont(new Font("Fira Code",Font.PLAIN,14));
+        dlt.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         dlt.setForeground(new Color(230,230,230));
         dlt.setBackground(new Color(34,34,34));
         dlt.setBorder(null);
@@ -295,7 +296,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         edit_menu.add(dlt);
 
         //settings
-        settings.setFont(new Font("Fira Code",Font.PLAIN,14));
+        settings.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         settings.setForeground(new Color(230,230,230));
         settings.setBackground(new Color(34,34,34));
         settings.setBorder(null);
@@ -303,7 +304,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         options_menu.add(settings);
 
         //information
-        info.setFont(new Font("Fira Code",Font.PLAIN,14));
+        info.setFont(new Font("Liberation Mono",Font.PLAIN,15));
         info.setForeground(new Color(230,230,230));
         info.setBackground(new Color(34,34,34));
         info.setBorder(null);
@@ -580,7 +581,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          */
         if(actionEvent.getSource() == settings) {
             //setting up the components
-            font_section.setFont(new Font("Fira Code",Font.PLAIN,15));
+            font_section.setFont(new Font("Liberation Mono",Font.PLAIN,15));
             font_section.setForeground(new Color(220,220,220));
             font_section.setBounds(250,50,250,20);
             font_section.addMouseListener(new MouseListener(){
@@ -626,7 +627,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            f_family.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_family.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             f_family.setForeground(new Color(220,220,220));
             f_family.setBounds(20,130,70,20);
             f_family.addMouseListener(new MouseListener(){
@@ -672,10 +673,10 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            font_box.setFont(new Font("Fira Code",Font.PLAIN,15));
+            font_box.setFont(new Font("Liberation Mono",Font.PLAIN,15));
             font_box.setForeground(new Color(230,230,230));
             font_box.setBackground(new Color(29,29,29));
-            font_box.setSelectedItem("Fira Code");
+            font_box.setSelectedItem("Liberation Mono");
             font_box.setBounds(80,128,250,25);
             font_box.addMouseListener(new MouseListener(){
 
@@ -723,7 +724,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                text_box.setFont(new Font((String)font_box.getSelectedItem(),Font.PLAIN,(int)text_box.getFont().getSize()));
             });
 
-            f_size.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_size.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             f_size.setForeground(new Color(220,220,220));
             f_size.setBounds(360,130,60,20);
             f_size.addMouseListener(new MouseListener(){
@@ -769,7 +770,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            size_spinner.setFont(new Font("JetBrains Mono",Font.PLAIN,14));
+            size_spinner.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             size_spinner.setBounds(423,130,60,20);
             size_spinner.addChangeListener(new ChangeListener(){
 
@@ -782,7 +783,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            f_color.setFont(new Font("Fira Code",Font.PLAIN,14));
+            f_color.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             f_color.setForeground(new Color(220,220,220));
             f_color.setBounds(513,131,80,20);
             f_color.addMouseListener(new MouseListener(){
@@ -834,7 +835,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             color_chooser.setBounds(585,130,20,20);
             color_chooser.addMouseListener(this);
 
-            theme_section.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme_section.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             theme_section.setForeground(new Color(220,220,220));
             theme_section.setBounds(270,215,100,20);
             theme_section.addMouseListener(new MouseListener(){
@@ -880,7 +881,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            theme.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             theme.setForeground(new Color(220,220,220));
             theme.setBounds(100,279,80,20);
             theme.addMouseListener(new MouseListener(){
@@ -926,14 +927,60 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            theme_box.setFont(new Font("Fira Code",Font.PLAIN,14));
+            theme_box.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             theme_box.setForeground(new Color(230,230,230));
             theme_box.setBackground(new Color(29,29,29));
             theme_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
             theme_box.setSelectedItem("dark");
             theme_box.setBounds(180,275,150,30);
+            theme_box.addMouseListener(new MouseListener() {
 
-            menu_bar_color.setFont(new Font("Fira Code",Font.PLAIN,14));
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					theme_box.setBorder(new LineBorder(new Color(78,34,160)));
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					theme_box.setBorder(new LineBorder(new Color(29,29,29)));
+				}
+            	
+            });
+            theme_box.addActionListener(e1 -> {
+            	switch(theme_box.getSelectedIndex()) {
+            	case 0:
+            		set_classic_theme();
+            		break;
+            	case 1:
+            		set_dark_theme();
+            		break;
+            	case 2:
+            		set_gray_theme();
+            		break;
+            	}
+            });
+
+            menu_bar_color.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             menu_bar_color.setForeground(new Color(220,220,220));
             menu_bar_color.setBounds(100,340,100,20);
             menu_bar_color.addMouseListener(this);
@@ -944,7 +991,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             menu_background_chooser.setOpaque(true);
             menu_background_chooser.addMouseListener(this);
 
-            text_box_background.setFont(new Font("Fira Code",Font.PLAIN,14));
+            text_box_background.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             text_box_background.setForeground(new Color(220,220,220));
             text_box_background.setBounds(100,370,100,20);
             text_box_background.addMouseListener(this);
@@ -955,7 +1002,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             text_box_color_chooser.setOpaque(true);
             text_box_color_chooser.addMouseListener(this);
 
-            app_background.setFont(new Font("Fira Code",Font.PLAIN,14));
+            app_background.setFont(new Font("Liberation Mono",Font.PLAIN,14));
             app_background.setForeground(new Color(220,220,220));
             app_background.setBounds(100,440,220,20);
             app_background.addMouseListener(this);
@@ -1003,7 +1050,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             JLabel logo_l = new JLabel("TextEditor++");
             JTextArea info_box = new JTextArea();
 
-            logo_l.setFont(new Font("Fira Code",Font.PLAIN,15));
+            logo_l.setFont(new Font("Liberation Mono",Font.PLAIN,15));
             logo_l.setForeground(new Color(200,200,200));
             logo_l.setBounds(240,30,130,23);
             logo_l.addMouseListener(new MouseListener(){
@@ -1052,7 +1099,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             info_box.setBounds(-1,65,602,555);
             info_box.setBackground(new Color(29,29,29));
             info_box.setCaretColor(new Color(29,29,29));
-            info_box.setFont(new Font("Fira Code",Font.PLAIN,16));
+            info_box.setFont(new Font("Liberation Mono",Font.PLAIN,16));
             info_box.setForeground(new Color(200,200,200));
             info_box.setEditable(false);
             info_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
@@ -1317,7 +1364,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         if(mouseEvent.getSource() == app_background_color_chooser) {
             app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(220,220,220)));
         }
-
+        
     }
 
 
@@ -1388,7 +1435,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
              */
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                file_menu.setForeground(new Color(78,34,160));
+                file_menu.setForeground(new Color(230,230,230));
             }
         });
 
@@ -1698,9 +1745,617 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 font_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
             }
         });
-
         
+        f_size.setForeground(new Color(220,220,220));
+        f_size.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				f_size.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				f_size.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        f_color.setForeground(new Color(220,220,220));
+        f_color.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				f_color.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				f_color.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+        color_chooser.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				color_chooser.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+			}
+        	
+        });
+        
+        theme_section.setForeground(new Color(220,220,220));
+        theme_section.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme_section.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme_section.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        theme.setForeground(new Color(220,220,220));
+        theme.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        theme_box.setBackground(new Color(29,29,29));
+        theme_box.setForeground(new Color(230,230,230));
+        theme_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+        theme_box.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme_box.setBorder(new LineBorder(new Color(78,34,160)));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				theme_box.setBorder(new LineBorder(new Color(29,29,29)));
+			}
+        	
+        });
+        
+        menu_bar_color.setForeground(new Color(220,220,220));
+        menu_bar_color.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				menu_bar_color.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				menu_bar_color.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        menu_background_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+        menu_background_chooser.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				menu_background_chooser.setBorder(new LineBorder(new Color(78,34,160)));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				menu_background_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+			}
+        	
+        });
+        
+        text_box_background.setForeground(new Color(220,220,220));
+        text_box_background.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				text_box_background.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				text_box_background.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        text_box_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+        text_box_color_chooser.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				text_box_color_chooser.setBorder(new LineBorder(new Color(78,34,160)));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				text_box_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+			}
+        	
+        });
+        
+        app_background.setForeground(new Color(220,220,220));
+        app_background.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				app_background.setForeground(new Color(78,34,160));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				app_background.setForeground(new Color(220,220,220));
+			}
+        	
+        });
+        
+        app_background_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+        app_background_color_chooser.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				app_background_color_chooser.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				app_background_color_chooser.setBorder(new LineBorder(new Color(220,220,220)));
+			}
+        	
+        });
+        
+    }
+    
+    
+    
+    
+    
+    /**
+     * Classic theme
+     */
+    public void set_classic_theme() {
+    	getContentPane().setBackground(Color.white);
+    	
+        menu_bar.setBackground(Color.white);
+        
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(200,30,150)));
+        
+        text_box.setBackground(Color.white);
+        text_box.setForeground(Color.DARK_GRAY);
+        text_box.setCaretColor(Color.black);
+        
+        file_menu.setForeground(Color.DARK_GRAY);
+        file_menu.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				file_menu.setForeground(new Color(200,30,150));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				file_menu.setForeground(Color.DARK_GRAY);
+			}
+        	
+        });
+        
+        Color alfa_c = new Color(200,30,150);
+        
+        edit_menu.setForeground(Color.DARK_GRAY);
+        edit_menu.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				edit_menu.setForeground(alfa_c);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				edit_menu.setForeground(Color.DARK_GRAY);
+			}
+        	
+        });
+        
+        options_menu.setForeground(Color.DARK_GRAY);
+        options_menu.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				options_menu.setForeground(alfa_c);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				options_menu.setForeground(Color.DARK_GRAY);
+			}
+        	
+        });
+        
+        about_menu.setForeground(Color.DARK_GRAY);
+        about_menu.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				about_menu.setForeground(alfa_c);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				about_menu.setForeground(Color.DARK_GRAY);
+			}
+        	
+        });
+        
+        
+    }
+    
+    
+    
+    
+    
+    /**
+     * Gray theme 
+     */
+    public void set_gray_theme() {
+    	
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
