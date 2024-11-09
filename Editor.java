@@ -1,3 +1,4 @@
+
 /**
  * TextEditor++
  *  Application
@@ -300,6 +301,14 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         settings.setBorder(null);
         settings.addActionListener(this);
         options_menu.add(settings);
+
+        //information
+        info.setFont(new Font("Fira Code",Font.PLAIN,14));
+        info.setForeground(new Color(230,230,230));
+        info.setBackground(new Color(34,34,34));
+        info.setBorder(null);
+        info.addActionListener(this);
+        about_menu.add(info);
 
 
 
@@ -984,6 +993,137 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             settings_fr.add(app_background_color_chooser);
         }
 
+
+
+        /**
+         * info
+         */
+        if(actionEvent.getSource() == info) {
+            JFrame info_fr = new JFrame("Information");
+            JLabel logo_l = new JLabel("TextEditor++");
+            JTextArea info_box = new JTextArea();
+
+            logo_l.setFont(new Font("Fira Code",Font.PLAIN,15));
+            logo_l.setForeground(new Color(200,200,200));
+            logo_l.setBounds(240,30,130,23);
+            logo_l.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    logo_l.setForeground(new Color(78,34,160));
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    logo_l.setForeground(new Color(200,200,200));
+                }
+            });
+
+            info_box.setBounds(-1,65,602,555);
+            info_box.setBackground(new Color(29,29,29));
+            info_box.setCaretColor(new Color(29,29,29));
+            info_box.setFont(new Font("Fira Code",Font.PLAIN,16));
+            info_box.setForeground(new Color(200,200,200));
+            info_box.setEditable(false);
+            info_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+            info_box.setText(
+              "\n Application version\n"
+              + "  1.0.0\n\n License\n"
+              + "  free to use\n\n Date of manifacture\n"
+              + "  Friday 8 November 2024\n\n Programmer\n"
+              + "  Tsvetelin Marinov\n\n Company\n  none\n\n"
+              + " Description\n  Text editor for everyday use\n"
+              + "  works with basic programming files and text files\n"
+            );
+            info_box.addMouseListener(new MouseListener(){
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mousePressed(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseReleased(MouseEvent mouseEvent) {
+
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    info_box.setForeground(Color.white);
+                }
+
+                /**
+                 * @param mouseEvent
+                 */
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    info_box.setForeground(new Color(200,200,200));
+                }
+
+            });
+
+
+            //setting up the frame
+            info_fr.setBounds(200,200,600,550);
+            info_fr.setLayout(null);
+            info_fr.setVisible(true);
+            info_fr.setResizable(false);
+            info_fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            info_fr.getContentPane().setBackground(new Color(30,30,30));
+
+            //add the components to the frame
+            info_fr.add(logo_l);
+            info_fr.add(info_box);
+        }
+
+
     }
 
 
@@ -1179,5 +1319,388 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         }
 
     }
+
+
+
+
+
+
+
+
+
+    /**
+     *  ------------------- Themes -----------------------------
+     */
+
+
+
+
+    /**
+     * Dark theme (original)
+     */
+    public void set_dark_theme(){
+        getContentPane().setBackground(new Color(29,29,29));
+
+        menu_bar.setBackground(new Color(29,29,29));
+
+        text_box.setBackground(new Color(25,25,25));
+        text_box.setForeground(new Color(230,230,230));
+
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+
+        file_menu.setForeground(new Color(230,230,230));
+        file_menu.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                file_menu.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                file_menu.setForeground(new Color(78,34,160));
+            }
+        });
+
+        edit_menu.setForeground(new Color(230,230,230));
+        edit_menu.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                edit_menu.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                edit_menu.setForeground(new Color(230,230,230));
+            }
+        });
+
+        options_menu.setForeground(new Color(230,230,230));
+        options_menu.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                options_menu.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                options_menu.setForeground(new Color(230,230,230));
+            }
+        });
+
+        about_menu.setForeground(new Color(230,230,230));
+        about_menu.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                about_menu.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                about_menu.setForeground(new Color(230,230,230));
+            }
+        });
+
+        new_file.setBackground(new Color(34,34,34));
+        new_file.setForeground(new Color(230,230,230));
+
+        load.setBackground(new Color(34,34,34));
+        load.setForeground(new Color(230,230,230));
+
+        Color m_b = new Color(34,34,34);
+        Color m_f = new Color(230,230,230);
+
+        export.setBackground(m_b);
+        export.setForeground(m_f);
+
+        new_window.setBackground(m_b);
+        new_window.setForeground(m_f);
+
+        reboot.setBackground(m_b);
+        reboot.setForeground(m_f);
+
+        close.setBackground(m_b);
+        close.setForeground(m_f);
+
+        select_all.setBackground(m_b);
+        select_all.setForeground(m_f);
+
+        cpy.setBackground(m_b);
+        cpy.setForeground(m_f);
+
+        paste.setBackground(m_b);
+        paste.setForeground(m_f);
+
+        dlt.setBackground(m_b);
+        dlt.setForeground(m_f);
+
+        settings.setBackground(m_b);
+        settings.setForeground(m_f);
+
+        info.setBackground(m_b);
+        info.setForeground(m_f);
+
+        settings_fr.getContentPane().setBackground(new Color(29,29,29));
+
+        font_section.setForeground(new Color(220,220,220));
+        font_section.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                font_section.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                font_section.setForeground(new Color(220,220,220));
+            }
+        });
+
+        f_family.setForeground(new Color(220,220,220));
+        f_family.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                f_family.setForeground(new Color(78,34,160));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                f_family.setForeground(new Color(220,220,220));
+            }
+        });
+
+        font_box.setBackground(new Color(29,29,29));
+        font_box.setForeground(new Color(230,230,230));
+        font_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+        font_box.addMouseListener(new MouseListener(){
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                font_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
+            }
+
+            /**
+             * @param mouseEvent
+             */
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                font_box.setBorder(BorderFactory.createLineBorder(new Color(29,29,29)));
+            }
+        });
+
+        
+    }
+
 
 }
