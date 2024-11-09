@@ -2330,7 +2330,35 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         	
         });
         
+        new_file.setBackground(Color.white);
+        new_file.setForeground(Color.DARK_GRAY);
         
+        load.setBackground(Color.white);
+        load.setForeground(Color.DARK_GRAY);
+        
+        export.setBackground(Color.white);
+        export.setForeground(Color.DARK_GRAY);
+        
+        new_window.setBackground(Color.white);
+        new_window.setForeground(Color.DARK_GRAY);
+        
+        reboot.setBackground(Color.white);
+        reboot.setForeground(Color.DARK_GRAY);
+        
+        close.setBackground(Color.white);
+        close.setForeground(Color.DARK_GRAY);
+        
+        select_all.setBackground(Color.white);
+        select_all.setForeground(Color.DARK_GRAY);
+        
+        cpy.setBackground(Color.white);
+        cpy.setForeground(Color.DARK_GRAY);
+        
+        paste.setBackground(Color.white);
+        paste.setForeground(Color.DARK_GRAY);
+        
+        dlt.setBackground(Color.white);
+        dlt.setForeground(Color.DARK_GRAY);
     }
     
     
