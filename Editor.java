@@ -319,7 +319,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * Setting up the frame
          */
         setTitle("TextEditor++");
-        setBounds(100,50,1100,590);
+        setBounds(100,50,1109,580);
         setLayout(null);
         setVisible(true);
         setResizable(false);
