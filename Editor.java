@@ -1,13 +1,9 @@
-
-
-
 /**
  * TextEditor++
  *  Application
  */
 
 package appdata;
-
 
 
 
@@ -23,11 +19,15 @@ import javax.swing.border.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.Caret;
+
+
+
+
+
 
 
 /**
- * The type Editor.
+ *
  */
 @SuppressWarnings("serial")
 public class Editor extends JFrame implements ActionListener,MouseListener{
@@ -37,124 +37,244 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     /**
      * @params
      */
-    //main menu bar
+	
+    /**
+     * main menu bar
+     */
     private JMenuBar menu_bar = new JMenuBar();
 
-    //file menu
+    
+    /**
+     * file menu
+     */
     private JMenu file_menu = new JMenu("File");
 
-    //edit menu
+    
+    /**
+     * edit menu
+     */
     private JMenu edit_menu = new JMenu("Edit");
 
-    //options menu
+    
+    /**
+     * options menu
+     */
     private JMenu options_menu = new JMenu("Options");
 
-    //about menu
+    
+    /**
+     * about menu
+     */
     private JMenu about_menu = new JMenu("About");
 
-    //new file
+    
+    /**
+     * new file
+     */
     private JMenuItem new_file = new JMenuItem("new file");
 
-    //open
+    
+    /**
+     * open
+     */
     private JMenuItem load = new JMenuItem("open");
 
-    //save
+    
+    /**
+     * save
+     */
     private JMenuItem export = new JMenuItem("save");
 
-    //new window
+    
+    /**
+     * new window
+     */
     private JMenuItem new_window = new JMenuItem("new window");
 
-    //restart
+    
+    /**
+     * restart
+     */
     private JMenuItem reboot = new JMenuItem("restart");
 
-    //exit
+    
+    /**
+     * exit
+     */
     private JMenuItem close = new JMenuItem("exit");
 
-    //select all
+    
+    /**
+     * select all
+     */
     private JMenuItem select_all = new JMenuItem("select all");
 
-    //copy
+    
+    /**
+     * copy
+     */
     private JMenuItem cpy = new JMenuItem("copy");
 
-    //paste
+    
+    /**
+     * paste
+     */
     private JMenuItem paste = new JMenuItem("paste");
 
-    //The string hold the copied text from the 'cpy' menu
+    
+    /**
+     * The string hold the copied text from the 'cpy' menu
+     */
     private String copied_txt;
 
-    //delete
+    
+    /**
+     * delete
+     */
     private JMenuItem dlt = new JMenuItem("delete all");
 
-    //settings
+    
+    /**
+     * settings
+     */
     private JMenuItem settings = new JMenuItem("settings");
 
-    //settings window
+    
+    /**
+     * settings window
+     */
     private JFrame settings_fr = new JFrame("settings");
 
-    //Font and color
+    
+    /**
+     * Font and color
+     */
     private JLabel font_section = new JLabel("Font and color");
 
-    //font family label
+    
+    /**
+     * font family label
+     */
     private JLabel f_family = new JLabel("font >");
 
-    //The string holds all the local fonts in the system
+    
+    /**
+     * The string holds all the local fonts in the system
+     */
     private String local_fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
-    //font`s box
+    
+    /**
+     * font`s box
+     */
     private JComboBox<String> font_box = new JComboBox<String>(local_fonts);
 
-    //font size label
+    
+    /**
+     * font size label
+     */
     private JLabel f_size = new JLabel("size >");
 
-    //number model for the size spinner
+    
+    /**
+     * number model for the size spinner
+     */
     private SpinnerModel mdl = new SpinnerNumberModel(19,0,50,1);
 
-    //size spinner
+    
+    /**
+     * size spinner
+     */
     private JSpinner size_spinner = new JSpinner(mdl);
 
-    //font color label
+    
+    /**
+     * font color label
+     */
     private JLabel f_color = new JLabel("color >");
 
-    //color chooser
+    
+    /**
+     * color chooser
+     */
     private JLabel color_chooser = new JLabel();
 
-    //Theme
+    
+    /**
+     * Theme
+     */
     private JLabel theme_section = new JLabel("Apperance");
 
-    //theme_label
+    
+    /**
+     * theme_label
+     */
     private JLabel theme = new JLabel("theme >");
 
-    //The string holds the themes for the theme_box
+    
+    /**
+     * The string holds the themes for the theme_box
+     */
     private String themes[] = { "classic","dark","gray" };
 
-    //themes box
+    
+    /**
+     * themes box
+     */
     private JComboBox<String> theme_box = new JComboBox<String>(themes);
 
-    //menu bar color chooser
+    
+    /**
+     * menu bar color chooser
+     */
     private JLabel menu_background_chooser = new JLabel();
 
-    //menu bar color label
+    
+    /*
+     * menu bar color label
+     */
     private JLabel menu_bar_color = new JLabel("menu bar >");
 
-    //text area background color label
+    
+    /**
+     * text area background color label
+     */
     private JLabel text_box_background = new JLabel("text box >");
 
-    //text area background color chooser
+    
+    /**
+     * text area background color chooser
+     */
     private JLabel text_box_color_chooser = new JLabel();
 
-    //application background label
+    
+    /**
+     * application background label
+     */
     private JLabel app_background = new JLabel("application background >");
 
-    //application background color chooser
+    
+    /**
+     * application background color chooser
+     */
     private JLabel app_background_color_chooser = new JLabel();
 
-    //info
+    
+    /**
+     * info
+     */
     private JMenuItem info = new JMenuItem("info");
 
-    //Text box
+    
+    /**
+     * Text box
+     */
     private JTextArea text_box = new JTextArea();
 
-    //Scroll pane for the text box
+    
+    /**
+     * Scroll pane for the text box
+     */
     private JScrollPane scroll = new JScrollPane(text_box);
 
 
@@ -170,7 +290,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     Editor(){
 
         //Text box
-        text_box.setFont(new Font("Liberation Mono",Font.PLAIN,19));
+        text_box.setFont(new Font("Consolas",Font.PLAIN,19));
         text_box.setForeground(new Color(220,220,220));
         text_box.setBackground(new Color(25,25,25));
         text_box.setBorder(null);
@@ -179,8 +299,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         text_box.setFocusable(true);
 
         //Scroll pane
-        scroll.setBounds(-1,50,1103,499);
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,24,160),1));
+        scroll.setBounds(-1,50,1095,499);
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160),1));
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         //main menu bar
@@ -331,17 +451,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         add(scroll);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -387,7 +497,9 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             FileNameExtensionFilter css = new FileNameExtensionFilter("stylesheet","css");
             FileNameExtensionFilter js = new FileNameExtensionFilter("java script file","js");
             FileNameExtensionFilter py = new FileNameExtensionFilter("pyton file","py");
-
+            FileNameExtensionFilter assembly = new FileNameExtensionFilter("assembly file","asm");
+            FileNameExtensionFilter dll = new FileNameExtensionFilter("Dynamic link library","dll");
+            
             //applying filters
             fl_chooser.setFileFilter(txt);
             fl_chooser.setFileFilter(doc);
@@ -401,7 +513,9 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             fl_chooser.setFileFilter(js);
             fl_chooser.setFileFilter(py);
             fl_chooser.setFileFilter(css);
-
+            fl_chooser.setFileFilter(assembly);
+            fl_chooser.setFileFilter(dll);
+            
             //The file
             File dcmnt;
 
@@ -460,7 +574,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             //hold the response from the file chooser
             int rsp = fl_chsr.showSaveDialog(null);
 
-            //check if the response is positive('open' button is selected)
+            //check if the response is positive('save' button is selected)
             //and hold the result
             boolean fileHasBeenSelected = (rsp == fl_chsr.APPROVE_OPTION) ? true : false;
 
@@ -510,7 +624,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             dispose();
 
             //create new window
-            Editor rebooted = new Editor();
+            @SuppressWarnings("unused")
+			Editor rebooted = new Editor();
         }
 
 
@@ -562,7 +677,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * paste
          */
         if(actionEvent.getSource() == paste) {
-            text_box.setText(copied_txt);
+            text_box.append(copied_txt);
         }
 
 
@@ -674,10 +789,10 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                 }
             });
 
-            font_box.setFont(new Font("Liberation Mono",Font.PLAIN,15));
+            font_box.setFont(new Font("Times New Roman",Font.PLAIN,15));
             font_box.setForeground(new Color(230,230,230));
             font_box.setBackground(new Color(29,29,29));
-            font_box.setSelectedItem("Liberation Mono");
+            font_box.setSelectedItem("Consolas");
             font_box.setBounds(80,128,250,25);
             font_box.addMouseListener(new MouseListener(){
 
@@ -1100,18 +1215,18 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             info_box.setBounds(-1,65,602,555);
             info_box.setBackground(new Color(29,29,29));
             info_box.setCaretColor(new Color(29,29,29));
-            info_box.setFont(new Font("Liberation Mono",Font.PLAIN,16));
+            info_box.setFont(new Font("Times New Roman",Font.PLAIN,16));
             info_box.setForeground(new Color(200,200,200));
             info_box.setEditable(false);
             info_box.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
             info_box.setText(
-                    "\n Application version\n"
-                            + "  1.0.0\n\n License\n"
-                            + "  free to use\n\n Date of manifacture\n"
-                            + "  Friday 8 November 2024\n\n Programmer\n"
-                            + "  Tsvetelin Marinov\n\n Company\n  none\n\n"
-                            + " Description\n  Text editor for everyday use\n"
-                            + "  works with basic programming files and text files\n"
+               "\n Application version\n"
+               + "  1.0.0\n\n License\n"
+               + "  free to use\n\n Date of manifacture\n"
+               + "  Friday 8 November 2024\n\n Programmer\n"
+               + "  Tsvetelin Marinov\n\n Company\n  none\n\n"
+               + " Description\n  Text editor for everyday use\n"
+               + "  works with basic programming files and text files\n"
             );
             info_box.addMouseListener(new MouseListener(){
 
@@ -1187,7 +1302,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
     /**
      * @param mouseEvent
      */
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void mouseClicked(MouseEvent mouseEvent) {
         //color chooser
         if(mouseEvent.getSource() == color_chooser) {
@@ -1393,6 +1509,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
 
         text_box.setBackground(new Color(25,25,25));
         text_box.setForeground(new Color(230,230,230));
+        text_box.setCaretColor(new Color(200,200,100));
 
         scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160)));
 
