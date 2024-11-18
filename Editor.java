@@ -1,3 +1,4 @@
+
 /**
  * TextEditor++
  *  Application
@@ -498,7 +499,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             FileNameExtensionFilter js = new FileNameExtensionFilter("java script file","js");
             FileNameExtensionFilter py = new FileNameExtensionFilter("pyton file","py");
             FileNameExtensionFilter assembly = new FileNameExtensionFilter("assembly file","asm");
-            FileNameExtensionFilter dll = new FileNameExtensionFilter("Dynamic link library","dll");
+            FileNameExtensionFilter dll = new FileNameExtensionFilter("dynamic link library","dll");
+            FileNameExtensionFilter vala = new FileNameExtensionFilter("vala source","vala");
             
             //applying filters
             fl_chooser.setFileFilter(txt);
@@ -515,6 +517,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             fl_chooser.setFileFilter(css);
             fl_chooser.setFileFilter(assembly);
             fl_chooser.setFileFilter(dll);
+            fl_chooser.setFileFilter(vala);
             
             //The file
             File dcmnt;
@@ -549,6 +552,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                     JOptionPane.showMessageDialog(null,"File not found","Error while loading file",JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace();
                 }finally {
+                	//close the scanner
                     scan.close();
                 }
             }
@@ -593,6 +597,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
                     JOptionPane.showMessageDialog(null,"directory not found!","Error while saving",JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace();
                 }finally {
+                	//close the printer
                     _output_.close();
                 }
             }
@@ -620,6 +625,9 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * restart
          */
         if(actionEvent.getSource() == reboot) {
+        	//Show error before rebooting
+        	JOptionPane.showMessageDialog(null,"Unsaved data will be lost!","Restart",JOptionPane.INFORMATION_MESSAGE);
+        	
             //disconnect the current window
             dispose();
 
@@ -635,6 +643,13 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * exit
          */
         if(actionEvent.getSource() == close) {
+        	JOptionPane.showMessageDialog(
+        			this,
+        			"Do you really want to quit?",
+        			"Exit",
+        			JOptionPane.INFORMATION_MESSAGE
+            );
+        	
             //exit the program
             System.exit(0);
         }
@@ -647,10 +662,15 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          */
         if(actionEvent.getSource() == select_all) {
             //select all the text in the text box
-            if(text_box.getText() != "") {
+            if(!text_box.getText().isEmpty()) {
                 text_box.selectAll();
             } else {
-                JOptionPane.showMessageDialog(null, "Nothing to select!","Empty filed",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(
+                		null,
+                		"Nothing to select!",
+                		"Empty filed",
+                		JOptionPane.ERROR_MESSAGE
+                );
             }
         }
 
@@ -665,8 +685,13 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             copied_txt = text_box.getSelectedText();
 
             //show error if the text box is empty
-            if(text_box.getText() == "") {
-                JOptionPane.showMessageDialog(null,"Nothing to copy!","Empty field",JOptionPane.ERROR_MESSAGE);
+            if(text_box.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(
+                		null,
+                		"Nothing to copy!",
+                		"Empty field",
+                		JOptionPane.ERROR_MESSAGE
+                );
             }
         }
 
@@ -677,7 +702,21 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * paste
          */
         if(actionEvent.getSource() == paste) {
-            text_box.append(copied_txt);
+        	boolean hasCopiedText = (!copied_txt.isEmpty()) ? true : false; 
+             
+        	if(hasCopiedText) {
+        		text_box.append(copied_txt);
+        		
+        		//reset the string to can hold another text
+        		copied_txt = "";
+        	}else {
+        		JOptionPane.showMessageDialog(
+        				this,
+        				"Nothing is copied!",
+        				"Copy some text first",
+        				JOptionPane.ERROR_MESSAGE
+        		);
+        	}
         }
 
 
@@ -687,8 +726,13 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * delete
          */
         if(actionEvent.getSource() == dlt) {
+           boolean hasContent = (text_box.getText() == "") ? true : false;
+	   if(!hasContent){
             text_box.setText("");
-        }
+	   }else {
+	       JOptionPane.showMessageDialog(this,"Nothing to be deleted!","Empty field",JOptionPane.ERROR_MESSAGE);
+	   }
+	}
 
 
 
