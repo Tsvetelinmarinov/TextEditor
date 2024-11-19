@@ -1,4 +1,3 @@
-
 /**
  * TextEditor++
  *  Application
@@ -289,20 +288,21 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
      *
      */
     Editor(){
-
         //Text box
         text_box.setFont(new Font("Consolas",Font.PLAIN,19));
         text_box.setForeground(new Color(220,220,220));
-        text_box.setBackground(new Color(25,25,25));
+        text_box.setBackground(new Color(27,27,27));
         text_box.setBorder(null);
         text_box.setEditable(true);
         text_box.setCaretColor(new Color(200,200,100));
         text_box.setFocusable(true);
 
         //Scroll pane
-        scroll.setBounds(-1,50,1095,499);
+        scroll.setBounds(-1,50,1096,493);
         scroll.setBorder(BorderFactory.createLineBorder(new Color(78,34,160),1));
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll.setWheelScrollingEnabled(true);
 
         //main menu bar
         menu_bar.setBackground(new Color(29,29,29));
@@ -501,6 +501,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             FileNameExtensionFilter assembly = new FileNameExtensionFilter("assembly file","asm");
             FileNameExtensionFilter dll = new FileNameExtensionFilter("dynamic link library","dll");
             FileNameExtensionFilter vala = new FileNameExtensionFilter("vala source","vala");
+            FileNameExtensionFilter cmake = new FileNameExtensionFilter("cmake file","cmake");
+            FileNameExtensionFilter manifest = new FileNameExtensionFilter("manifest file","MF");
             
             //applying filters
             fl_chooser.setFileFilter(txt);
@@ -518,6 +520,8 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
             fl_chooser.setFileFilter(assembly);
             fl_chooser.setFileFilter(dll);
             fl_chooser.setFileFilter(vala);
+            fl_chooser.setFileFilter(cmake);
+            fl_chooser.setFileFilter(manifest);
             
             //The file
             File dcmnt;
@@ -625,7 +629,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * restart
          */
         if(actionEvent.getSource() == reboot) {
-        	//Show error before rebooting
+        	//Show hint before rebooting
         	JOptionPane.showMessageDialog(null,"Unsaved data will be lost!","Restart",JOptionPane.INFORMATION_MESSAGE);
         	
             //disconnect the current window
@@ -643,11 +647,12 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * exit
          */
         if(actionEvent.getSource() == close) {
+        	//ask first
         	JOptionPane.showMessageDialog(
         			this,
         			"Do you really want to quit?",
         			"Exit",
-        			JOptionPane.INFORMATION_MESSAGE
+        			JOptionPane.QUESTION_MESSAGE
             );
         	
             //exit the program
@@ -707,7 +712,7 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
         	if(hasCopiedText) {
         		text_box.append(copied_txt);
         		
-        		//reset the string to can hold another text
+        		//reset the string so can hold another text
         		copied_txt = "";
         	}else {
         		JOptionPane.showMessageDialog(
@@ -726,13 +731,13 @@ public class Editor extends JFrame implements ActionListener,MouseListener{
          * delete
          */
         if(actionEvent.getSource() == dlt) {
-           boolean hasContent = (text_box.getText() == "") ? true : false;
-	   if(!hasContent){
-            text_box.setText("");
-	   }else {
-	       JOptionPane.showMessageDialog(this,"Nothing to be deleted!","Empty field",JOptionPane.ERROR_MESSAGE);
-	   }
-	}
+        	boolean hasContent = (text_box.getText() == "") ? true : false;
+        	if(!hasContent) {
+               text_box.setText("");
+        	}else {
+        		JOptionPane.showMessageDialog(this,"Nothing to be deleted!","Empty field",JOptionPane.ERROR_MESSAGE);
+        	}
+        }
 
 
 
