@@ -1,4 +1,3 @@
-
 /**
  * TextEditor++
  *  Application
@@ -490,12 +489,15 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
         menuBar.add(aboutMenu);
 
 
+        
+        //The menu item background color
+        Color back = new Color(180,200,250);
         /**
          * new file
          */
         newFile.setFont(new Font( (String)fileMenu.getFont().getFamily(), (int)fileMenu.getFont().getStyle(),(14)));
         newFile.setForeground(Color.black);
-        newFile.setBackground((Color)fileMenu.getBackground());
+        newFile.setBackground(back);
         newFile.setBorder(null);
         newFile.addMouseListener(this);
         newFile.addActionListener(this);
@@ -507,7 +509,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         load.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         load.setForeground((Color)newFile.getForeground());
-        load.setBackground((Color)newFile.getBackground());
+        load.setBackground(back);
         load.setBorder((Border)newFile.getBorder());
         load.addMouseListener(this);
         load.addActionListener(this);
@@ -519,7 +521,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         export.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize() ));
         export.setForeground((Color)newFile.getForeground());
-        export.setBackground((Color)newFile.getBackground());
+        export.setBackground(back);
         export.setBorder((Border)newFile.getBorder());
         export.addActionListener(this);
         export.addMouseListener(this);
@@ -531,7 +533,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         newWindow.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         newWindow.setForeground((Color)newFile.getForeground());
-        newWindow.setBackground((Color)newFile.getBackground());
+        newWindow.setBackground(back);
         newWindow.setBorder((Border)newFile.getBorder());
         newWindow.addMouseListener(this);
         newWindow.addActionListener(this);
@@ -543,7 +545,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         reboot.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         reboot.setForeground((Color)newFile.getForeground());
-        reboot.setBackground((Color)newFile.getBackground());
+        reboot.setBackground(back);
         reboot.setBorder((Border)newFile.getBorder());
         reboot.addMouseListener(this);
         reboot.addActionListener(this);
@@ -552,7 +554,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
         close.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         close.setForeground((Color)newFile.getForeground());
-        close.setBackground((Color)newFile.getBackground());
+        close.setBackground(back);
         close.setBorder((Border)newFile.getBorder());
         close.addMouseListener(this);
         close.addActionListener(this);
@@ -564,7 +566,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         selectAll.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         selectAll.setForeground((Color)newFile.getForeground());
-        selectAll.setBackground((Color)newFile.getBackground());
+        selectAll.setBackground(back);
         selectAll.setBorder((Border)newFile.getBorder());
         selectAll.addMouseListener(this);
         selectAll.addActionListener(this);
@@ -576,7 +578,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         cpy.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         cpy.setForeground((Color)newFile.getForeground());
-        cpy.setBackground((Color)newFile.getBackground());
+        cpy.setBackground(back);
         cpy.setBorder((Border)newFile.getBorder());
         cpy.addMouseListener(this);
         cpy.addActionListener(this);
@@ -588,7 +590,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         paste.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         paste.setForeground((Color)newFile.getForeground());
-        paste.setBackground((Color)newFile.getBackground());
+        paste.setBackground(back);
         paste.setBorder((Border)newFile.getBorder());
         paste.addMouseListener(this);
         paste.addActionListener(this);
@@ -600,7 +602,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         dltAll.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         dltAll.setForeground((Color)newFile.getForeground());
-        dltAll.setBackground((Color)newFile.getBackground());
+        dltAll.setBackground(back);
         dltAll.setBorder((Border)newFile.getBorder());
         dltAll.addMouseListener(this);
         dltAll.addActionListener(this);
@@ -613,7 +615,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         settings.setFont(new Font((String)newFile.getFont().getFamily(), (int)newFile.getFont().getStyle(), (int)newFile.getFont().getSize()));
         settings.setForeground((Color)newFile.getForeground());
-        settings.setBackground((Color)newFile.getBackground());
+        settings.setBackground(back);
         settings.setBorder((Border)newFile.getBorder());
         settings.addMouseListener(this);
         settings.addActionListener(this);
@@ -621,16 +623,11 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
         
         
         /**
-         * 
-         */
-        
-        
-        /**
          * Information 
          */
         info.setFont((Font)newFile.getFont());
         info.setForeground((Color)newFile.getForeground());
-        info.setBackground((Color)newFile.getBackground());
+        info.setBackground(back);
         info.setBorder(null);
         info.setFocusable(true);
         info.addMouseListener(this);
@@ -643,7 +640,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         tipsAndTricks.setFont((Font)info.getFont());
         tipsAndTricks.setForeground((Color)info.getForeground());
-        tipsAndTricks.setBackground((Color)info.getBackground());
+        tipsAndTricks.setBackground(back);
         tipsAndTricks.setBorder(null);
         tipsAndTricks.addMouseListener(this);
         tipsAndTricks.addActionListener(this);
@@ -661,7 +658,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
         this.setFocusable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().setBackground(new Color(247,247,247));
+        this.getContentPane().setBackground(new Color(249,249,249));
 
 
         /**
@@ -721,6 +718,35 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
             //Scanner to scan selected file
             Scanner scanner = null;
+            
+            //File extensions
+            FileNameExtensionFilter txt = new FileNameExtensionFilter("text file","txt");
+            FileNameExtensionFilter html = new FileNameExtensionFilter("html document","html");
+            FileNameExtensionFilter fxml = new FileNameExtensionFilter("fxml document","fxml");
+            FileNameExtensionFilter xml = new FileNameExtensionFilter("xml configuration","xml");
+            FileNameExtensionFilter cpp = new FileNameExtensionFilter("C++ file","cpp");
+            FileNameExtensionFilter c = new FileNameExtensionFilter("C file","c");
+            FileNameExtensionFilter cs = new FileNameExtensionFilter("C# file","cs");
+            FileNameExtensionFilter java = new FileNameExtensionFilter("java file","java");
+            FileNameExtensionFilter css = new FileNameExtensionFilter("style sheet","css");
+            FileNameExtensionFilter js = new FileNameExtensionFilter("java script file","js");
+            FileNameExtensionFilter py = new FileNameExtensionFilter("pyton file","py");
+            FileNameExtensionFilter iml = new FileNameExtensionFilter("iml configuration","iml");
+            
+            
+            //Apply filters to the file chooser
+            fileChooser.setFileFilter(txt);
+            fileChooser.setFileFilter(html);
+            fileChooser.setFileFilter(fxml);
+            fileChooser.setFileFilter(xml);
+            fileChooser.setFileFilter(cpp);
+            fileChooser.setFileFilter(c);
+            fileChooser.setFileFilter(cs);
+            fileChooser.setFileFilter(java);
+            fileChooser.setFileFilter(css);
+            fileChooser.setFileFilter(js);
+            fileChooser.setFileFilter(py);
+            fileChooser.setFileFilter(iml);
 
 
             //show file chooser and select a file
@@ -2360,6 +2386,123 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
      * Classic theme
      */
     public void setClassicTheme() {
+    	/**
+    	 * Update content pane
+    	 */
+    	getContentPane().setBackground(new Color(247,247,247));
+    	
+    	
+    	/**
+    	 * Update text box
+    	 */
+    	textBox.setBackground(new Color(251,251,251));
+    	textBox.setCaretColor(new Color(78,36,160));
+    	textBox.setForeground(Color.black);
+    	
+    	
+    	/**
+    	 * Update the menu bar
+    	 */
+    	menuBar.setBackground(new Color(247,247,247));
+    	
+    	
+    	/**
+    	 * Update menus
+    	 */
+    	fileMenu.setForeground(Color.black);
+    	fileMenu.addMouseListener(new BetaListener());
+    	
+    	editMenu.setForeground(Color.black);
+    	editMenu.addMouseListener(new BetaListener());
+    	
+    	optionsMenu.setForeground(Color.black);
+    	optionsMenu.addMouseListener(new BetaListener());
+    	
+    	aboutMenu.setForeground(Color.black);
+    	aboutMenu.addMouseListener(new BetaListener());
+    	
+    	
+    	/**
+    	 * Update menu items
+    	 */
+    	//The new menu item background
+    	Color back = new Color(180,200,250);
+    	Color fore = Color.black;
+    	
+    	newFile.setBackground(back);
+    	newFile.setForeground(fore);
+    	
+    	load.setBackground(back);
+    	load.setForeground(fore);
+    	
+    	export.setBackground(back);
+    	export.setForeground(fore);
+    	
+    	newWindow.setBackground(back);
+    	newWindow.setForeground(fore);
+    	
+    	reboot.setBackground(back);
+    	reboot.setForeground(fore);
+    	
+    	close.setBackground(back);
+    	close.setForeground(fore);
+    	
+    	selectAll.setBackground(back);
+    	selectAll.setForeground(fore);
+    	
+    	cpy.setBackground(back);
+    	cpy.setForeground(fore);
+    	
+    	paste.setBackground(back);
+    	paste.setForeground(fore);
+    	
+    	dltAll.setBackground(back);
+    	dltAll.setForeground(fore);
+    	
+    	settings.setBackground(back);
+    	settings.setForeground(fore);
+    	
+    	info.setBackground(back);
+    	info.setForeground(fore);
+    	
+    	tipsAndTricks.setBackground(back);
+    	tipsAndTricks.setForeground(fore);
+    	
+    	
+    	/**
+    	 * Update visual effects of the settings window buttons
+    	 */
+    	 //Secret button with no functionality
+    	JButton secretButton = new JButton();
+    	
+    	
+    	//The new background(the original background)
+    	Color backg = (Color)secretButton.getBackground();
+    	
+    	fontColorChooser.setBackground(backg);
+    	fontColorChooser.addMouseListener(new BetaListener());
+    	
+    	resetFont.setBackground(backg);
+    	resetFont.addMouseListener(new BetaListener());
+    	
+    	apperButton.setBackground(backg);
+    	apperButton.addMouseListener(new BetaListener());
+    	
+    	manualFontColorChooser.setBackground(backg);
+    	manualFontColorChooser.addMouseListener(new BetaListener());
+    	
+    	manualTextBoxBackgroundButton.setBackground(backg);
+    	manualTextBoxBackgroundButton.addMouseListener(new BetaListener());
+    	
+    	appColorChooser.setBackground(backg);
+    	appColorChooser.addMouseListener(new BetaListener());
+    	
+    	borderColorChooser.setBackground(backg);
+    	borderColorChooser.addMouseListener(new BetaListener());
+    	
+    	resetDefaults.setBackground(backg);
+    	resetDefaults.addMouseListener(new BetaListener());
+    	
     	
     }
     
@@ -2370,6 +2513,114 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
      * Gray theme
      */
     public void setGrayTheme() {
+    	/**
+    	 * Update application background
+    	 */
+    	getContentPane().setBackground(new Color(200,200,200));
+    	
+    	
+    	/**
+    	 * Update text box
+    	 */
+    	textBox.setBackground(new Color(180,180,180));
+    	textBox.setForeground(Color.black);
+    	textBox.setCaretColor(Color.YELLOW);
+    	
+    	
+    	/**
+    	 * Update the menu bar and menus
+    	 */
+    	menuBar.setBackground(new Color(200,200,200));
+    	
+    	Color clr = Color.black;
+    	
+    	fileMenu.setForeground(clr);
+    	fileMenu.addMouseListener(new GamaListener());
+    	
+    	editMenu.setForeground(clr);
+    	editMenu.addMouseListener(new GamaListener());
+    	
+    	optionsMenu.setForeground(clr);
+    	optionsMenu.addMouseListener(new GamaListener());
+    	
+    	aboutMenu.setForeground(clr);
+    	aboutMenu.addMouseListener(new GamaListener());
+    	
+    	Color menuclr = new Color(180,180,180);
+    	Color menufore = new Color(2,2,2);
+    	
+    	newFile.setBackground(menuclr);
+    	newFile.setForeground(menufore);
+    	
+    	load.setBackground(menuclr);
+    	load.setForeground(menufore);
+    	
+    	export.setBackground(menuclr);
+    	export.setForeground(menufore);
+    	
+    	newWindow.setBackground(menuclr);
+    	newWindow.setForeground(menufore);
+    	
+    	reboot.setBackground(menuclr);
+    	reboot.setForeground(menufore);
+    	
+    	close.setBackground(menuclr);
+    	close.setForeground(menufore);
+    	
+    	selectAll.setBackground(menuclr);
+    	selectAll.setForeground(menufore);
+    	
+    	cpy.setBackground(menuclr);
+    	cpy.setForeground(menufore);
+    	
+    	paste.setBackground(menuclr);
+    	paste.setForeground(menufore);
+    	
+    	dltAll.setBackground(menuclr);
+    	dltAll.setForeground(menufore);
+    	
+    	settings.setBackground(menuclr);
+    	settings.setForeground(menufore);
+    	
+    	info.setBackground(menuclr);
+    	info.setForeground(menufore);
+    	
+    	tipsAndTricks.setBackground(menuclr);
+    	tipsAndTricks.setForeground(menufore);
+    	
+    	
+    	//Secret button
+    	JButton secretButton = new JButton();
+    	
+    	//Original background
+    	Color org_back = secretButton.getBackground();
+    	
+    	/*
+    	 * Update buttons 
+    	 */
+    	fontColorChooser.setBackground(org_back);
+    	fontColorChooser.addMouseListener(new GamaListener());
+    	
+    	resetFont.setBackground(org_back);
+    	resetFont.addMouseListener(new GamaListener());
+    	
+    	apperButton.setBackground(org_back);
+    	apperButton.addMouseListener(new GamaListener());
+    	
+    	manualFontColorChooser.setBackground(org_back);
+    	manualFontColorChooser.addMouseListener(new GamaListener());
+    	
+    	manualTextBoxBackgroundButton.setBackground(org_back);
+    	manualTextBoxBackgroundButton.addMouseListener(new GamaListener());
+    	
+    	appColorChooser.setBackground(org_back);
+    	appColorChooser.addMouseListener(new GamaListener());
+    	
+    	borderColorChooser.setBackground(org_back);
+    	borderColorChooser.addMouseListener(new GamaListener());
+    	
+    	resetDefaults.setBackground(org_back);
+    	resetDefaults.addMouseListener(new GamaListener());
     	
     }
     
@@ -2378,220 +2629,221 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
     
     
     
-    /*
+    /**
      * MouseListener for the dark theme
      */
     protected class AlfaListener implements MouseListener{
 
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+    	@Override
+    	public void mouseClicked(MouseEvent e) {
+    		// TODO Auto-generated method stub
+    		
+    	}
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+    	@Override
+    	public void mousePressed(MouseEvent e) {
+    		// TODO Auto-generated method stub
+    		
+    	}
 
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+    	@Override
+    	public void mouseReleased(MouseEvent e) {
+    		// TODO Auto-generated method stub
+    		
+    	}
 
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			/**
-			 * File menu
-			 */
-			if(e.getSource() == fileMenu)
-				fileMenu.setForeground(Color.white);
-			
-			
-			
-			/**
-			 * Edit menu
-			 */
-			if(e.getSource() == editMenu)
-				editMenu.setForeground(Color.white); 
-			
-			
-			
-			/**
-			 * Options menu
-			 */
-			if(e.getSource() == optionsMenu) 
-				optionsMenu.setForeground(Color.white);
-			
-			
-			/**
-			 * About menu
-			 */
-			if(e.getSource() == aboutMenu)
-				aboutMenu.setForeground(Color.white);
-			
-			
-			/**
-			 * Font section
-			 */
-			if(e.getSource() == fontSection) 
-				fontSection.setForeground(new Color(200,200,200));
-			
-			
-			/**
-			 * Font labels
-			 */
-			if(e.getSource() == fontFamily)
-				fontFamily.setForeground(new Color(200,200,200));
-			
-		    if(e.getSource() == fontSize)
-		    	fontSize.setForeground(new Color(200,200,200));
-		    
-		    if(e.getSource() == fontStyle)
-		    	fontStyle.setForeground(new Color(220,220,200));
-		    
-		    if(e.getSource() == fontColor) 
-		    	fontColor.setForeground(new Color(200,200,200));
-			
-		    
-		    /**
-		     * Theme section and theme label
-		     */
-		    if(e.getSource() == themeSection) 
-		    	themeSection.setForeground(new Color(200,200,200));
-		    
-		    if(e.getSource() == theme)
-		    	theme.setForeground(new Color(200,200,200));
-		    
-		    
-		    /**
-		     * Buttons
-		     */
-		    if(e.getSource() == fontColorChooser) 
-		    fontColorChooser.setBackground(new Color(80,160,170));
-		    
-		    if(e.getSource() == resetFont) 
-		    	resetFont.setBackground(new Color(80,160,170));
-		     
-		    
-		   if(e.getSource() == apperButton)
-			   apperButton.setBackground(new Color(80,160,170));
-		   
-		   if(e.getSource() == manualFontColorChooser)
-			   manualFontColorChooser.setBackground(new Color(80,160,170));
-		   
-		   if(e.getSource() == manualTextBoxBackgroundButton)
-			   manualTextBoxBackgroundButton.setBackground(new Color(80,160,170));
-		   
-		   if(e.getSource() == appColorChooser)
-			   appColorChooser.setBackground(new Color(80,160,170));
-		   
-		   if(e.getSource() == borderColorChooser)
-			   borderColorChooser.setBackground(new Color(80,160,170));
-		   
-		   if(e.getSource() == resetDefaults)
-			   resetDefaults.setBackground(new Color(80,160,170));
-		
-		}
+    	@Override
+    	public void mouseEntered(MouseEvent e) {
+    		// TODO Auto-generated method stub
+    		/**
+    		 * File menu
+    		 */
+    		if(e.getSource() == fileMenu)
+    			fileMenu.setForeground(Color.white);
+    		
+    		
+    		
+    		/**
+    		 * Edit menu
+    		 */
+    		if(e.getSource() == editMenu)
+    			editMenu.setForeground(Color.white); 
+    		
+    		
+    		
+    		/**
+    		 * Options menu
+    		 */
+    		if(e.getSource() == optionsMenu) 
+    			optionsMenu.setForeground(Color.white);
+    		
+    		
+    		/**
+    		 * About menu
+    		 */
+    		if(e.getSource() == aboutMenu)
+    			aboutMenu.setForeground(Color.white);
+    		
+    		
+    		/**
+    		 * Font section
+    		 */
+    		if(e.getSource() == fontSection) 
+    			fontSection.setForeground(new Color(200,200,200));
+    		
+    		
+    		/**
+    		 * Font labels
+    		 */
+    		if(e.getSource() == fontFamily)
+    			fontFamily.setForeground(new Color(200,200,200));
+    		
+    	    if(e.getSource() == fontSize)
+    	    	fontSize.setForeground(new Color(200,200,200));
+    	    
+    	    if(e.getSource() == fontStyle)
+    	    	fontStyle.setForeground(new Color(220,220,200));
+    	    
+    	    if(e.getSource() == fontColor) 
+    	    	fontColor.setForeground(new Color(200,200,200));
+    		
+    	    
+    	    /**
+    	     * Theme section and theme label
+    	     */
+    	    if(e.getSource() == themeSection) 
+    	    	themeSection.setForeground(new Color(200,200,200));
+    	    
+    	    if(e.getSource() == theme)
+    	    	theme.setForeground(new Color(200,200,200));
+    	    
+    	    
+    	    /**
+    	     * Buttons
+    	     */
+    	    if(e.getSource() == fontColorChooser) 
+    	    fontColorChooser.setBackground(new Color(80,160,170));
+    	    
+    	    if(e.getSource() == resetFont) 
+    	    	resetFont.setBackground(new Color(80,160,170));
+    	     
+    	    
+    	   if(e.getSource() == apperButton)
+    		   apperButton.setBackground(new Color(80,160,170));
+    	   
+    	   if(e.getSource() == manualFontColorChooser)
+    		   manualFontColorChooser.setBackground(new Color(80,160,170));
+    	   
+    	   if(e.getSource() == manualTextBoxBackgroundButton)
+    		   manualTextBoxBackgroundButton.setBackground(new Color(80,160,170));
+    	   
+    	   if(e.getSource() == appColorChooser)
+    		   appColorChooser.setBackground(new Color(80,160,170));
+    	   
+    	   if(e.getSource() == borderColorChooser)
+    		   borderColorChooser.setBackground(new Color(80,160,170));
+    	   
+    	   if(e.getSource() == resetDefaults)
+    		   resetDefaults.setBackground(new Color(80,160,170));
+    	
+    	}
 
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			/**
-			 * File menu
-			 */
-			if(e.getSource() == fileMenu) 
-				fileMenu.setForeground(new Color(220,220,220));
-		
-			
-			/**
-			 * Edit menu
-			 */
-			if(e.getSource() == editMenu) 
-				editMenu.setForeground(new Color(220,220,220));	
-			
-			
-			/**
-			 * Options menu
-			 */
-			if(e.getSource() == optionsMenu) 
-				optionsMenu.setForeground(new Color(220,220,200));
-			
-			
-			/**
-			 * About menu
-			 */
-			if(e.getSource() == aboutMenu) 
-				aboutMenu.setForeground(new Color(220,220,220));
-			
-			
-			/**
-			 * Font section
-			 */
-			if(e.getSource() == fontSection) 
-				fontSection.setForeground((Color)textBox.getForeground());
-			
-			
-			/**
-			 * Font labels
-			 */
-			if(e.getSource() == fontFamily) 
-				fontFamily.setForeground((Color)textBox.getForeground());
-			
-			if(e.getSource() == fontSize) 
-				fontSize.setForeground((Color)textBox.getForeground());
-			
-			if(e.getSource() == fontStyle) 
-				fontStyle.setForeground((Color)textBox.getForeground());
-			
-			if(e.getSource() == fontColor) 
-				fontColor.setForeground((Color)textBox.getForeground());
-			
-			
-			/**
-			 * Theme section and theme label
-			 */
-			if(e.getSource() == themeSection) 
-				themeSection.setForeground((Color)textBox.getForeground());
-			
-			if(e.getSource() == theme)
-				theme.setForeground((Color)textBox.getForeground());
-			
-	        
-			/**
-			 * Buttons
-			 */
-			if(e.getSource() == fontColorChooser) 
-				fontColorChooser.setBackground(new Color(80,80,70));
-			
-			if(e.getSource() == resetFont)
-				resetFont.setBackground(new Color(80,80,70));
-			
-			
-			if(e.getSource() == apperButton)
-				apperButton.setBackground(new Color(80,80,70));
-						
-			if(e.getSource() == manualFontColorChooser)
-				manualFontColorChooser.setBackground(new Color(80,80,70));
-			
-			if(e.getSource() == manualTextBoxBackgroundButton)
-				manualTextBoxBackgroundButton.setBackground(new Color(80,80,70));
-			
-			if(e.getSource() == appColorChooser)
-				appColorChooser.setBackground(new Color(80,80,70));
-			
-			if(e.getSource() == borderColorChooser)
-				borderColorChooser.setBackground(new Color(80,80,70));
-			
-			if(e.getSource() == resetDefaults)
-				resetDefaults.setBackground(new Color(80,80,70));
-			
-		}
+    	@Override
+    	public void mouseExited(MouseEvent e) {
+    		// TODO Auto-generated method stub
+    		/**
+    		 * File menu
+    		 */
+    		if(e.getSource() == fileMenu) 
+    			fileMenu.setForeground(new Color(220,220,220));
+    	
+    		
+    		/**
+    		 * Edit menu
+    		 */
+    		if(e.getSource() == editMenu) 
+    			editMenu.setForeground(new Color(220,220,220));	
+    		
+    		
+    		/**
+    		 * Options menu
+    		 */
+    		if(e.getSource() == optionsMenu) 
+    			optionsMenu.setForeground(new Color(220,220,200));
+    		
+    		
+    		/**
+    		 * About menu
+    		 */
+    		if(e.getSource() == aboutMenu) 
+    			aboutMenu.setForeground(new Color(220,220,220));
+    		
+    		
+    		/**
+    		 * Font section
+    		 */
+    		if(e.getSource() == fontSection) 
+    			fontSection.setForeground((Color)textBox.getForeground());
+    		
+    		
+    		/**
+    		 * Font labels
+    		 */
+    		if(e.getSource() == fontFamily) 
+    			fontFamily.setForeground((Color)textBox.getForeground());
+    		
+    		if(e.getSource() == fontSize) 
+    			fontSize.setForeground((Color)textBox.getForeground());
+    		
+    		if(e.getSource() == fontStyle) 
+    			fontStyle.setForeground((Color)textBox.getForeground());
+    		
+    		if(e.getSource() == fontColor) 
+    			fontColor.setForeground((Color)textBox.getForeground());
+    		
+    		
+    		/**
+    		 * Theme section and theme label
+    		 */
+    		if(e.getSource() == themeSection) 
+    			themeSection.setForeground((Color)textBox.getForeground());
+    		
+    		if(e.getSource() == theme)
+    			theme.setForeground((Color)textBox.getForeground());
+    		
+            
+    		/**
+    		 * Buttons
+    		 */
+    		if(e.getSource() == fontColorChooser) 
+    			fontColorChooser.setBackground(new Color(80,80,70));
+    		
+    		if(e.getSource() == resetFont)
+    			resetFont.setBackground(new Color(80,80,70));
+    		
+    		
+    		if(e.getSource() == apperButton)
+    			apperButton.setBackground(new Color(80,80,70));
+    					
+    		if(e.getSource() == manualFontColorChooser)
+    			manualFontColorChooser.setBackground(new Color(80,80,70));
+    		
+    		if(e.getSource() == manualTextBoxBackgroundButton)
+    			manualTextBoxBackgroundButton.setBackground(new Color(80,80,70));
+    		
+    		if(e.getSource() == appColorChooser)
+    			appColorChooser.setBackground(new Color(80,80,70));
+    		
+    		if(e.getSource() == borderColorChooser)
+    			borderColorChooser.setBackground(new Color(80,80,70));
+    		
+    		if(e.getSource() == resetDefaults)
+    			resetDefaults.setBackground(new Color(80,80,70));
+    		
+    	}
     	
     }
+   
     
     
     
@@ -2622,16 +2874,274 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
+			/**
+			 * File menu
+			 */
+			if(e.getSource() == fileMenu)
+				fileMenu.setForeground(Color.DARK_GRAY);
 			
+			
+			/**
+			 * Edit menu
+			 */
+			if(e.getSource() == editMenu)
+				editMenu.setForeground(Color.DARK_GRAY);
+			
+			
+			/**
+			 * Options menu
+			 */
+			if(e.getSource() == optionsMenu)
+				optionsMenu.setForeground(Color.DARK_GRAY);
+			
+			
+			/**
+			 * About menu
+			 */
+			if(e.getSource() == aboutMenu)
+				aboutMenu.setForeground(Color.DARK_GRAY);
+			
+			
+			/**
+			 * Buttons
+			 */
+			if(e.getSource() == fontColorChooser)
+				fontColorChooser.setBackground(new Color(180,200,250));
+			
+			Color backgr = new Color(180,200,250);
+			
+			if(e.getSource() == resetFont)
+				resetFont.setBackground(backgr);
+			
+			if(e.getSource() == apperButton)
+				apperButton.setBackground(backgr);
+			
+			if(e.getSource() == manualFontColorChooser)
+				manualFontColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == manualTextBoxBackgroundButton)
+				manualTextBoxBackgroundButton.setBackground(backgr);
+			
+			if(e.getSource() == appColorChooser)
+				appColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == borderColorChooser)
+				borderColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == resetDefaults)
+				resetDefaults.setBackground(backgr);
+		
 		}
+		
+		
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
+			Color blk = Color.black;
+			
+			/**
+			 * File menu
+			 */		
+			if(e.getSource() == fileMenu)
+				fileMenu.setForeground(Color.black);
+			
+			
+			/**
+			 * Edit menu
+			 */
+			if(e.getSource() == editMenu)
+				editMenu.setForeground(Color.black);
+			
+			
+			/**
+			 * Options menu
+			 */
+			if(e.getSource() == optionsMenu)
+				optionsMenu.setForeground(blk);
+			
+			
+			/**
+			 * About menu
+			 */
+			if(e.getSource() == aboutMenu)
+				aboutMenu.setForeground(blk);
+		 
+			
+			/**
+			 * Buttons
+			 */	
+			//Secret button with no functioanlity
+			JButton secret = new JButton();
+			
+			Color backgr = secret.getBackground(); 
+					
+			if(e.getSource() == fontColorChooser)
+				fontColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == resetFont)
+				resetFont.setBackground(backgr);
+			
+			if(e.getSource() == apperButton)
+				apperButton.setBackground(backgr);
+			
+			if(e.getSource() == manualFontColorChooser)
+				manualFontColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == manualTextBoxBackgroundButton)
+				manualTextBoxBackgroundButton.setBackground(backgr);
+			
+			if(e.getSource() == appColorChooser)
+				appColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == borderColorChooser)
+				borderColorChooser.setBackground(backgr);
+			
+			if(e.getSource() == resetDefaults)
+				resetDefaults.setBackground(backgr);
+		
 			
 		}
     	
     }
+    
+    
+    
+    
+    /**
+     * MouseListener for the gray theme
+     */
+    protected class GamaListener implements MouseListener{
 
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			Color clr = Color.DARK_GRAY;
+			
+			/**
+			 * Menus
+			 */
+			if(e.getSource() == fileMenu)
+				fileMenu.setForeground(clr);
+			
+			if(e.getSource() == editMenu)
+				editMenu.setForeground(clr);
+			
+			if(e.getSource() == optionsMenu)
+				optionsMenu.setForeground(clr);
+			
+			if(e.getSource() == aboutMenu)
+				aboutMenu.setForeground(clr);
+			
+			
+			Color hover = new Color(180,210,240);
+			
+			/**
+			 * Buttons
+			 */
+		    if(e.getSource() == fontColorChooser)
+		    	fontColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == resetFont)
+		    	resetFont.setBackground(hover);
+		    
+		    if(e.getSource() == apperButton)
+		    	apperButton.setBackground(hover);
+		    
+		    if(e.getSource() == manualFontColorChooser)
+		    	manualFontColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == manualTextBoxBackgroundButton)
+		    	manualTextBoxBackgroundButton.setBackground(hover);
+		    
+		    if(e.getSource() == appColorChooser)
+		    	appColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == borderColorChooser)
+		    	borderColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == resetDefaults)
+		    	resetDefaults.setBackground(hover);
+			
+			
+		}
+		
+		
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+           Color clr = Color.black;
+			
+			/**
+			 * Menus
+			 */
+			if(e.getSource() == fileMenu)
+				fileMenu.setForeground(clr);
+			
+			if(e.getSource() == editMenu)
+				editMenu.setForeground(clr);
+			
+			if(e.getSource() == optionsMenu)
+				optionsMenu.setForeground(clr);
+			
+			if(e.getSource() == aboutMenu)
+				aboutMenu.setForeground(clr);
+			
+			
+			
+			//Secret button
+			JButton secret_button = new JButton();
+			
+            Color hover = (Color)secret_button.getBackground();
+			
+			/**
+			 * Buttons
+			 */
+		    if(e.getSource() == fontColorChooser)
+		    	fontColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == resetFont)
+		    	resetFont.setBackground(hover);
+		    
+		    if(e.getSource() == apperButton)
+		    	apperButton.setBackground(hover);
+		    
+		    if(e.getSource() == manualFontColorChooser)
+		    	manualFontColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == manualTextBoxBackgroundButton)
+		    	manualTextBoxBackgroundButton.setBackground(hover);
+		    
+		    if(e.getSource() == appColorChooser)
+		    	appColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == borderColorChooser)
+		    	borderColorChooser.setBackground(hover);
+		    
+		    if(e.getSource() == resetDefaults)
+		    	resetDefaults.setBackground(hover);
+			
+		}
+    	
+    }
 
 }
