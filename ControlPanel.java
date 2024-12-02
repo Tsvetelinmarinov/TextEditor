@@ -3,7 +3,7 @@
  * Control panel
  */
 
-//no package
+package appdata;
 
 
 
