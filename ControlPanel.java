@@ -30,6 +30,7 @@ public class ControlPanel {
          */
         EventQueue.invokeLater(new Runnable() {
             @Override public void run() {
+                @SuppressWarnings("unused")
                 Editor application = new Editor();
             }
         });
