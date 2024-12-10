@@ -257,7 +257,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
     /**
-     * Manal set the apperance
+     * Manal set the appearance
      */
     private JButton apperButton = new JButton("configure manual");
 
@@ -293,7 +293,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
     /**
-     * Scpacer
+     * Spacer
      */
     private JLabel spacer6 = new JLabel("-----------------------");
 
@@ -490,8 +490,9 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
         
-        //The menu item background color
+        //The menu items background color
         Color back = new Color(180,200,250);
+	    
         /**
          * new file
          */
@@ -803,7 +804,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          */
         if(e.getSource() == export) {
 
-            //Printwriter to write the the text from the text box to a new file
+            //Print writer to write the the text from the text box to a new file
             PrintWriter _output_ = null;
 
             //New file
@@ -883,7 +884,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          * restart
          */
         if(e.getSource() == reboot) {
-            //show warning first
+            //show warning
             JOptionPane.showMessageDialog(
                     this,
                     "Unsaved data will be lost!",
@@ -904,7 +905,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          * exit
          */
         if(e.getSource() == close) {
-            //ask first
+            //show warning
             JOptionPane.showMessageDialog(
                     this,"Do you really want to quit?",
                     "Warning",
@@ -1130,7 +1131,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          * select all
          */
         if(e.getSource() == selectAll){
-            //check if the text box is empty first
+            //check if the text box is empty
             boolean textBoxIsEmpty = textBox.getText().isEmpty();
 
             if(textBoxIsEmpty) {
@@ -1173,7 +1174,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
             }
 
             if(!textBoxHasNotContent) {
-                //copy the selected text
+                //copy selected text
                 cpytxt = textBox.getSelectedText();
             }
 
@@ -1205,7 +1206,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
                 //append the copied text to the text box
                 textBox.append((String) getCopiedText());
 
-                //clear the string for new copied text
+                //clear the string for new text
                 cpytxt = "";
             }
 
@@ -1292,7 +1293,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
 
 
         /**
-         * Manual config button
+         * Manual configuration button
          */
         if(e.getSource() == apperButton) {
             /**
@@ -1459,7 +1460,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
             @SuppressWarnings("static-access")
 			Color clr = clr_chsr.showDialog(null,"Pick a color",(Color)textBox.getBackground());
 
-            //apply the changes
+            //apply changes
             textBox.setBackground(clr);
         }
 
@@ -1468,7 +1469,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
          * Application background button
          */
         if(e.getSource() == appColorChooser){
-            //Color chooser to select a color and use it
+            //Color chooser to select a color
             JColorChooser clrchsr = new JColorChooser();
 
             //The new color
