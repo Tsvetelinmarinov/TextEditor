@@ -1527,7 +1527,7 @@ public class Editor extends JFrame implements MouseListener,ActionListener {
         	        "\n\n                   Main information\n\n" + 
         	        "\n\n Application version\n  1.0.0" +
         	        "\n\n Application description\n  Text editor for every day use, works with basic" +
-        	        "\n  programming files and text files\n\n Date of manifacture\n  ...\n\n License\n  free for use open source project"+
+        	        "\n  programming files and text files\n\n Date of manifacture\n  28/12/2024\n\n License\n  free for use open source project"+
         	        "\n\n Programmer\n  Tsvetelin Marinov\n\n Place\n  Sofia, Bulgaria, EU\n\n"	
         	;
         	
